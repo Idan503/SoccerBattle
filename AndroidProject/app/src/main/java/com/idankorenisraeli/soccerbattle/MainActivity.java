@@ -2,9 +2,11 @@ package com.idankorenisraeli.soccerbattle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Layout;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -15,20 +17,23 @@ import com.bumptech.glide.Glide;
 
 public class MainActivity extends AppCompatActivity {
 
-    // region Players & Attacks UI Variable Declarations
+    // region Players Declarations
 
     /*  The battle is player "Left" (Left in English) vs player "Right" (Right in English).
         Images, names, attacks of players, are all being set dynamically */
     SeekBar playerLeftBar, playerRightBar;
-
     ImageView playerLeftImage, playerRightImage;
+    SoccerPlayer playerLeft, playerRight;
+    // endregion
+
+    // region Attacks Declarations
+
     FrameLayout attackLeftLayout1, attackLeftLayout2, attackLeftLayout3; // Layouts are also attack buttons
     FrameLayout attackRightLayout1, attackRightLayout2, attackRightLayout3; // Layouts are also attack buttons
     ImageView attackLeftImage1, attackLeftImage2, attackLeftImage3;
     ImageView attackRightImage1, attackRightImage2, attackRightImage3;
     TextView attackLeftText1, attackLeftText2, attackLeftText3;
     TextView attackRightText1, attackRightText2, attackRightText3;
-
     LinearLayout attacksLeft, attacksRight;
     // endregion
 
@@ -39,12 +44,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         findViews();
-        GameManager manager = GameManager.getInstance();
-
-        SoccerPlayer leftPlayer = manager.getDefaultPlayerLeft();
-        SoccerPlayer rightPlayer = manager.getDefaultPlayerRight();
-
-        setElementsUI(leftPlayer, rightPlayer);
+        hideStatusBar();
+        generatePlayers();
 
     }
 
@@ -60,6 +61,17 @@ public class MainActivity extends AppCompatActivity {
 
         playerLeftImage = findViewById(R.id.image_player_left);
         playerRightImage = findViewById(R.id.image_player_right);
+    }
+
+    // Making the activity full-screen for better game experience
+    private void hideStatusBar(){
+        View view = getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+
+        view.setSystemUiVisibility(uiOptions);
+        ActionBar actionBar = getActionBar();
+        if(actionBar!=null)
+            actionBar.hide();
     }
 
     // Attack views are inside different included layouts
@@ -113,6 +125,13 @@ public class MainActivity extends AppCompatActivity {
         attackRightText1.setText(rightAttacks[0].getName());
         attackRightText2.setText(rightAttacks[1].getName());
         attackRightText3.setText(rightAttacks[2].getName());
+    }
+
+    private void generatePlayers(){
+        playerLeft = GameManager.getInstance().getDefaultPlayerLeft();
+        playerRight = GameManager.getInstance().getDefaultPlayerRight();
+
+        setElementsUI(playerLeft, playerRight);
     }
 
 

@@ -11,7 +11,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.3"
         android:background="@drawable/attack_button_background"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:layout_marginBottom="15dp"
         >
 
@@ -79,7 +79,7 @@
         android:layout_weight="0.3"
         android:background="@drawable/attack_button_background"
         android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="25dp"
         >
 
         <ImageView
