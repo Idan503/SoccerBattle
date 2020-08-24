@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="110dp"
+    android:weightSum="0.9"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:id="@+id/attacks_layout_button_1"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+        android:background="@drawable/attack_button_background"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        >
+
+        <ImageView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:contentDescription="@string/attack_1"
+            android:id="@+id/attacks_image_1"
+            android:scaleType="centerInside"
+            android:paddingTop="15dp"
+            android:paddingBottom="35dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/attacks_text_1"
+            android:text="@string/attack_1"
+            android:gravity="bottom|center_horizontal"
+            android:paddingBottom="10dp"
+            android:textColor="@android:color/black"
+            android:textAllCaps="true"
+            />
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:id="@+id/attacks_layout_button_2"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+        android:background="@drawable/attack_button_background"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        >
+
+        <ImageView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:contentDescription="@string/attack_2"
+            android:id="@+id/attacks_image_2"
+            android:scaleType="centerInside"
+            android:paddingTop="15dp"
+            android:paddingBottom="35dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/attacks_text_2"
+            android:text="@string/attack_2"
+            android:gravity="bottom|center_horizontal"
+            android:paddingBottom="10dp"
+            android:textColor="@android:color/black"
+            android:textAllCaps="true"
+            />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:id="@+id/attacks_layout_button_3"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+        android:background="@drawable/attack_button_background"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        >
+
+        <ImageView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:id="@+id/attacks_image_3"
+            android:contentDescription="@string/attack_3"
+            android:scaleType="centerInside"
+            android:paddingTop="15dp"
+            android:paddingBottom="35dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/attacks_text_3"
+            android:text="@string/attack_3"
+            android:gravity="bottom|center_horizontal"
+            android:paddingBottom="10dp"
+            android:textColor="@android:color/black"
+            android:textAllCaps="true"
+            />
+
+    </FrameLayout>
+
+</LinearLayout>

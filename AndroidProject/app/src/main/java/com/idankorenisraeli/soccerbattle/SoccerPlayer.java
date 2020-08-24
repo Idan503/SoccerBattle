@@ -2,23 +2,16 @@ package com.idankorenisraeli.soccerbattle;
 
 public class SoccerPlayer {
     private String name;
-    private String imageURI;
+    private int imageId;
     private SoccerAttack[] attacks;
     private int currentPoints;
 
     private final static int MAX_POINTS = 100; // Total number of points to win
 
-    public SoccerPlayer(String name, String imageURI, SoccerAttack[] attacks) {
+    public SoccerPlayer(String name, int imageId, SoccerAttack[] attacks) {
         this.name = name;
-        this.imageURI = imageURI;
+        this.imageId = imageId;
         this.attacks = attacks;
-    }
-
-    // Here attacks are being set by default
-    public SoccerPlayer(String name, String imageURI) {
-        this.name = name;
-        this.imageURI = imageURI;
-        this.attacks = GameManager.getInstance().getDefaultAttacks();
     }
 
     // Player will receive the points for attacks performed, and might win (return value)
@@ -40,12 +33,12 @@ public class SoccerPlayer {
         this.name = name;
     }
 
-    public String getImageURI() {
-        return imageURI;
+    public int getImageId() {
+        return imageId;
     }
 
-    public void setImageURI(String imageURI) {
-        this.imageURI = imageURI;
+    public void setImageId(int imageId) {
+        this.imageId = imageId;
     }
 
     public SoccerAttack[] getAttacks() {

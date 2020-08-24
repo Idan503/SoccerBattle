@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">SoccerBattle</string>
+
+    <string name="attack_1">attack_1</string>
+    <string name="attack_2">attack_2</string>
+    <string name="attack_3">attack_3</string>
+
+    <string name="player_1">player_1</string>
+    <string name="player_2">player_2</string>
+
 </resources>

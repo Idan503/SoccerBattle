@@ -2,13 +2,13 @@ package com.idankorenisraeli.soccerbattle;
 
 public class SoccerAttack {
     private String name;
-    private String imageURI;
+    private int imageId;
     private int points; // Receiving amount for player performing this attack
 
-    public SoccerAttack(String name, int points, String imageURI) {
+    public SoccerAttack(String name, int points, int imageId) {
         this.name = name;
         this.points = points;
-        this.imageURI = imageURI;
+        this.imageId = imageId;
     }
 
     public String getName() {
@@ -27,11 +27,11 @@ public class SoccerAttack {
         this.points = points;
     }
 
-    public String getImageURI() {
-        return imageURI;
+    public int getImageId() {
+        return imageId;
     }
 
-    public void setImageURI(String imageURI) {
-        this.imageURI = imageURI;
+    public void setImageId(int imageId) {
+        this.imageId = imageId;
     }
 }
