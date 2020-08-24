@@ -1,7 +1,6 @@
 package com.idankorenisraeli.soccerbattle;
 
 import android.app.Application;
-import android.view.View;
 
 public class MyApp extends Application {
     @Override
@@ -9,7 +8,7 @@ public class MyApp extends Application {
     super.onCreate();
 
 
-    GlideUtils.initHelper(this);
+    CommonUtils.initHelper(this);
 
     }
 }

@@ -21,6 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:thumb="@android:color/transparent"
+            android:clickable="false"
+            android:progressDrawable="@drawable/seekbar_progress_red"
             android:id="@+id/bar_player_left"
             />
 
@@ -71,6 +73,7 @@
             android:layout_height="10dp"
             android:thumb="@android:color/transparent"
             android:clickable="false"
+            android:progressDrawable="@drawable/seekbar_progress_red"
             android:id="@+id/bar_player_right"
             />
 

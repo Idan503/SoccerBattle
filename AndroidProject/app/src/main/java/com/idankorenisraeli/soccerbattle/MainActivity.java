@@ -3,9 +3,7 @@ package com.idankorenisraeli.soccerbattle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActionBar;
-import android.net.Uri;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -13,13 +11,11 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-
 public class MainActivity extends AppCompatActivity {
 
     // region Players Declarations
 
-    /*  The battle is player "Left" (Left in English) vs player "Right" (Right in English).
+    /*  The battle is player "Left" vs player "Right".
         Images, names, attacks of players, are all being set dynamically */
     SeekBar playerLeftBar, playerRightBar;
     ImageView playerLeftImage, playerRightImage;
@@ -46,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
         findViews();
         hideStatusBar();
         generatePlayers();
+        setAttacksListeners();
+
+
 
     }
 
@@ -108,30 +107,45 @@ public class MainActivity extends AppCompatActivity {
     private void setElementsUI(SoccerPlayer left, SoccerPlayer right){
         // For left player
         SoccerAttack[] leftAttacks = left.getAttacks();
-        GlideUtils.getInstance().setImageResource(playerLeftImage, left.getImageId());
-        GlideUtils.getInstance().setImageResource(attackLeftImage1, leftAttacks[0].getImageId());
-        GlideUtils.getInstance().setImageResource(attackLeftImage2, leftAttacks[1].getImageId());
-        GlideUtils.getInstance().setImageResource(attackLeftImage3, leftAttacks[2].getImageId());
+        CommonUtils utils = CommonUtils.getInstance();
+        utils.setImageResource(playerLeftImage, left.getImageId());
+        utils.setImageResource(attackLeftImage1, leftAttacks[0].getImageId());
+        utils.setImageResource(attackLeftImage2, leftAttacks[1].getImageId());
+        utils.setImageResource(attackLeftImage3, leftAttacks[2].getImageId());
         attackLeftText1.setText(leftAttacks[0].getName());
         attackLeftText2.setText(leftAttacks[1].getName());
         attackLeftText3.setText(leftAttacks[2].getName());
+        playerLeftBar.setMax(SoccerPlayer.MAX_POINTS);
 
         // For right player
         SoccerAttack[] rightAttacks = right.getAttacks();
-        GlideUtils.getInstance().setImageResource(playerRightImage, right.getImageId());
-        GlideUtils.getInstance().setImageResource(attackRightImage1, rightAttacks[0].getImageId());
-        GlideUtils.getInstance().setImageResource(attackRightImage2, rightAttacks[1].getImageId());
-        GlideUtils.getInstance().setImageResource(attackRightImage3, rightAttacks[2].getImageId());
+        utils.setImageResource(playerRightImage, right.getImageId());
+        utils.setImageResource(attackRightImage1, rightAttacks[0].getImageId());
+        utils.setImageResource(attackRightImage2, rightAttacks[1].getImageId());
+        utils.setImageResource(attackRightImage3, rightAttacks[2].getImageId());
         attackRightText1.setText(rightAttacks[0].getName());
         attackRightText2.setText(rightAttacks[1].getName());
         attackRightText3.setText(rightAttacks[2].getName());
+        playerRightBar.setMax(SoccerPlayer.MAX_POINTS);
     }
 
     private void generatePlayers(){
-        playerLeft = GameManager.getInstance().getDefaultPlayerLeft();
-        playerRight = GameManager.getInstance().getDefaultPlayerRight();
+        playerLeft = GameManager.getInstance().getPlayerLeft();
+        playerRight = GameManager.getInstance().getPlayerRight();
 
         setElementsUI(playerLeft, playerRight);
+    }
+
+    private void setAttacksListeners(){
+        SoccerAttack[] leftAttacks = playerLeft.getAttacks();
+        attackLeftLayout1.setOnClickListener(new AttackButtonListener(playerLeft,leftAttacks[0],playerLeftBar));
+        attackLeftLayout2.setOnClickListener(new AttackButtonListener(playerLeft,leftAttacks[1],playerLeftBar));
+        attackLeftLayout3.setOnClickListener(new AttackButtonListener(playerLeft,leftAttacks[2],playerLeftBar));
+
+        SoccerAttack[] rightAttacks = playerRight.getAttacks();
+        attackRightLayout1.setOnClickListener(new AttackButtonListener(playerRight,rightAttacks[0],playerRightBar));
+        attackRightLayout2.setOnClickListener(new AttackButtonListener(playerRight,rightAttacks[1],playerRightBar));
+        attackRightLayout3.setOnClickListener(new AttackButtonListener(playerRight,rightAttacks[2],playerRightBar));
     }
 
 

@@ -6,7 +6,7 @@ public class SoccerPlayer {
     private SoccerAttack[] attacks;
     private int currentPoints;
 
-    private final static int MAX_POINTS = 100; // Total number of points to win
+    public static final int MAX_POINTS = 100; // Total number of points to win
 
     public SoccerPlayer(String name, int imageId, SoccerAttack[] attacks) {
         this.name = name;
@@ -18,7 +18,7 @@ public class SoccerPlayer {
     public boolean performAttack(SoccerAttack attack){
         GameManager.getInstance().playedTurn();
         this.currentPoints += attack.getPoints();
-        if(currentPoints > MAX_POINTS) {
+        if(currentPoints >= MAX_POINTS) {
             currentPoints = MAX_POINTS; // Player win
             return true;
         }
