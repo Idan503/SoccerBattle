@@ -31,7 +31,15 @@ public class MainActivity extends AppCompatActivity {
     TextView attackLeftText1, attackLeftText2, attackLeftText3;
     TextView attackRightText1, attackRightText2, attackRightText3;
     LinearLayout attacksLeft, attacksRight;
+
+    AttackButtonsManager attackManager;
     // endregion
+
+    // region Other Declarations
+
+    ImageView backgroundImage;
+    // endregion
+
 
 
     @Override
@@ -44,8 +52,7 @@ public class MainActivity extends AppCompatActivity {
         generatePlayers();
         setAttacksListeners();
 
-
-
+        startGame();
     }
 
 
@@ -60,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
 
         playerLeftImage = findViewById(R.id.image_player_left);
         playerRightImage = findViewById(R.id.image_player_right);
+
+        backgroundImage = findViewById(R.id.image_background);
     }
 
     // Making the activity full-screen for better game experience
@@ -127,27 +136,41 @@ public class MainActivity extends AppCompatActivity {
         attackRightText2.setText(rightAttacks[1].getName());
         attackRightText3.setText(rightAttacks[2].getName());
         playerRightBar.setMax(SoccerPlayer.MAX_POINTS);
+
+        // For background image
+        utils.setImageResource(backgroundImage,GameData.getInstance().getBackgroundId());
     }
 
     private void generatePlayers(){
-        playerLeft = GameManager.getInstance().getPlayerLeft();
-        playerRight = GameManager.getInstance().getPlayerRight();
+        GameData data = GameData.getInstance();
+        playerLeft = data.getPlayerLeft();
+        playerRight = data.getPlayerRight();
 
         setElementsUI(playerLeft, playerRight);
     }
 
     private void setAttacksListeners(){
         SoccerAttack[] leftAttacks = playerLeft.getAttacks();
-        attackLeftLayout1.setOnClickListener(new AttackButtonListener(playerLeft,leftAttacks[0],playerLeftBar));
-        attackLeftLayout2.setOnClickListener(new AttackButtonListener(playerLeft,leftAttacks[1],playerLeftBar));
-        attackLeftLayout3.setOnClickListener(new AttackButtonListener(playerLeft,leftAttacks[2],playerLeftBar));
+        attackLeftLayout1.setOnClickListener(new AttackListener(playerLeft,leftAttacks[0],playerLeftBar));
+        attackLeftLayout2.setOnClickListener(new AttackListener(playerLeft,leftAttacks[1],playerLeftBar));
+        attackLeftLayout3.setOnClickListener(new AttackListener(playerLeft,leftAttacks[2],playerLeftBar));
 
         SoccerAttack[] rightAttacks = playerRight.getAttacks();
-        attackRightLayout1.setOnClickListener(new AttackButtonListener(playerRight,rightAttacks[0],playerRightBar));
-        attackRightLayout2.setOnClickListener(new AttackButtonListener(playerRight,rightAttacks[1],playerRightBar));
-        attackRightLayout3.setOnClickListener(new AttackButtonListener(playerRight,rightAttacks[2],playerRightBar));
+        attackRightLayout1.setOnClickListener(new AttackListener(playerRight,rightAttacks[0],playerRightBar));
+        attackRightLayout2.setOnClickListener(new AttackListener(playerRight,rightAttacks[1],playerRightBar));
+        attackRightLayout3.setOnClickListener(new AttackListener(playerRight,rightAttacks[2],playerRightBar));
     }
 
+    private void startGame(){
+        attackManager = AttackButtonsManager.initHelper(
+                new FrameLayout[]{attackLeftLayout1,attackLeftLayout2,attackLeftLayout3},
+                new FrameLayout[]{attackRightLayout1,attackRightLayout2,attackRightLayout3});
+
+        if(GameManager.getInstance().getStartingPlayer() == playerLeft)
+            attackManager.setLeftTurn();
+        else
+            attackManager.setRightTurn();
+    }
 
 
 

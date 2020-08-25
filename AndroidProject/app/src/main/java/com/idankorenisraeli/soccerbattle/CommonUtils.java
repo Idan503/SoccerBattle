@@ -1,7 +1,9 @@
 package com.idankorenisraeli.soccerbattle;
 
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.content.Context;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -42,5 +44,7 @@ public class CommonUtils {
     public void showToast(String message){
         Toast.makeText(context,message, Toast.LENGTH_SHORT).show();
     }
+
+
 
 }
