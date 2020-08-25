@@ -1,10 +1,14 @@
 package com.idankorenisraeli.soccerbattle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActionBar;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -41,21 +45,22 @@ public class MainActivity extends AppCompatActivity {
     // endregion
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        findViews();
-        hideStatusBar();
-        generatePlayers();
-        setAttacksListeners();
 
+        initUI();
         startGame();
     }
 
-
+    // region Runtime Interface Initialisation
+    private void initUI(){
+        setContentView(R.layout.activity_main);
+        findViews();
+        generatePlayers();
+        setAttacksListeners();
+    }
 
     private void findViews(){
         attacksLeft = findViewById(R.id.layout_attacks_left);
@@ -69,17 +74,6 @@ public class MainActivity extends AppCompatActivity {
         playerRightImage = findViewById(R.id.image_player_right);
 
         backgroundImage = findViewById(R.id.image_background);
-    }
-
-    // Making the activity full-screen for better game experience
-    private void hideStatusBar(){
-        View view = getWindow().getDecorView();
-        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-
-        view.setSystemUiVisibility(uiOptions);
-        ActionBar actionBar = getActionBar();
-        if(actionBar!=null)
-            actionBar.hide();
     }
 
     // Attack views are inside different included layouts
@@ -125,6 +119,8 @@ public class MainActivity extends AppCompatActivity {
         attackLeftText2.setText(leftAttacks[1].getName());
         attackLeftText3.setText(leftAttacks[2].getName());
         playerLeftBar.setMax(SoccerPlayer.MAX_POINTS);
+        playerLeftBar.setProgress(playerLeft.getCurrentPoints());
+        playerLeftBar.setEnabled(false); // Prevent user change
 
         // For right player
         SoccerAttack[] rightAttacks = right.getAttacks();
@@ -136,6 +132,8 @@ public class MainActivity extends AppCompatActivity {
         attackRightText2.setText(rightAttacks[1].getName());
         attackRightText3.setText(rightAttacks[2].getName());
         playerRightBar.setMax(SoccerPlayer.MAX_POINTS);
+        playerRightBar.setProgress(playerRight.getCurrentPoints());
+        playerRightBar.setEnabled(false); // Prevent user change
 
         // For background image
         utils.setImageResource(backgroundImage,GameData.getInstance().getBackgroundId());
@@ -161,17 +159,25 @@ public class MainActivity extends AppCompatActivity {
         attackRightLayout3.setOnClickListener(new AttackListener(playerRight,rightAttacks[2],playerRightBar));
     }
 
+    // endregion
+
     private void startGame(){
         attackManager = AttackButtonsManager.initHelper(
                 new FrameLayout[]{attackLeftLayout1,attackLeftLayout2,attackLeftLayout3},
                 new FrameLayout[]{attackRightLayout1,attackRightLayout2,attackRightLayout3});
 
-        if(GameManager.getInstance().getStartingPlayer() == playerLeft)
-            attackManager.setLeftTurn();
-        else
-            attackManager.setRightTurn();
+        attackManager.updateAttackButtons();
     }
 
+    // region Rotation Configuration Handling
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Code gets to here after device is rotated
+        // Our layout should be reloaded because of different version for landscape/portrait
+        initUI();
+        startGame();
+    }
 
-
+    // endregion
 }

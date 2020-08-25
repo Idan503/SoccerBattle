@@ -3,11 +3,13 @@ package com.idankorenisraeli.soccerbattle;
 import android.content.Context;
 
 public class GameManager {
+    public enum PlayerTurn{LEFT, RIGHT, NONE};
 
     private static GameManager single_instance = null;
     private int turnsPlayed;
+    private PlayerTurn currentTurn = PlayerTurn.LEFT;
 
-    private static final SoccerPlayer startingPlayer = GameData.getInstance().getPlayerLeft();
+    public static final PlayerTurn DEFAULT_TURN = PlayerTurn.LEFT;
 
     private GameManager(){
         turnsPlayed = 0;
@@ -21,6 +23,15 @@ public class GameManager {
 
     public void playedTurn(){
         turnsPlayed++;
+
+        if(currentTurn==PlayerTurn.LEFT){
+            currentTurn = PlayerTurn.RIGHT;
+        }
+        else if(currentTurn==PlayerTurn.RIGHT)
+            currentTurn = PlayerTurn.LEFT;
+
+        if(isGameOver())
+            currentTurn = PlayerTurn.NONE;
     }
 
     public int getTurnsPlayed(){
@@ -36,8 +47,12 @@ public class GameManager {
                 right.getCurrentPoints() >= SoccerPlayer.MAX_POINTS);
     }
 
-    public SoccerPlayer getStartingPlayer(){
-        return startingPlayer;
+    public PlayerTurn getCurrentTurn() {
+        return currentTurn;
+    }
+
+    public void setCurrentTurn(PlayerTurn turn){
+        currentTurn = turn;
     }
 
 }

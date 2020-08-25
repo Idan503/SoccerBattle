@@ -24,14 +24,13 @@ public class AttackListener implements View.OnClickListener {
     public void onClick(View view) {
         if(!GameManager.getInstance().isGameOver()) {
             boolean isWin = player.performAttack(attack);
-
             updateBarProgress(view.getContext());
-            AttackButtonsManager.getInstance().switchTurn(); // Next turn
 
             if (isWin) {
                 CommonUtils.getInstance().showToast(player.getName() + " Wins!");
-                AttackButtonsManager.getInstance().setNoneTurn(); // Game is over
             }
+
+            AttackButtonsManager.getInstance().updateAttackButtons(); // Updating UI Attack buttons
         }
     }
 

@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:elevation="-1dp"
         android:id="@+id/image_background"
-        android:scaleType="centerCrop"
+        android:scaleType="fitXY"
         />
 
     <LinearLayout
@@ -20,8 +20,8 @@
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="20dp"
         android:id="@+id/layout_player_left"
         >
         
@@ -30,7 +30,6 @@
             android:layout_height="13dp"
             android:thumb="@android:color/transparent"
             android:clickable="false"
-            android:enabled="false"
             android:progressDrawable="@drawable/seekbar_progress_red"
             android:id="@+id/bar_player_left"
             />
@@ -46,23 +45,23 @@
     </LinearLayout>
 
     <include layout="@layout/layout_attacks"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@id/layout_player_left"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toEndOf="@+id/layout_player_left"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:id="@+id/layout_attacks_left"
         />
 
 
     <include layout="@layout/layout_attacks"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@id/layout_player_right"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toStartOf="@id/layout_player_right"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:id="@+id/layout_attacks_right"
         />
 
@@ -71,9 +70,9 @@
         android:layout_height="130dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="20dp"
         android:id="@+id/layout_player_right"
         >
 
@@ -82,7 +81,6 @@
             android:layout_height="13dp"
             android:thumb="@android:color/transparent"
             android:clickable="false"
-            android:enabled="false"
             android:progressDrawable="@drawable/seekbar_progress_red"
             android:id="@+id/bar_player_right"
             />

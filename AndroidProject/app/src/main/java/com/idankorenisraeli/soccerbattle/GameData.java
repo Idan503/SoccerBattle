@@ -43,7 +43,7 @@ public class GameData {
 
     // region Progress Bar
     public enum ProgressBarColor{ RED, GREEN}
-    private static final float GREEN_BAR_THRESHOLD = 0.75f;
+    private static final float GREEN_BAR_THRESHOLD = 0.7f;
 
     // endregion
 

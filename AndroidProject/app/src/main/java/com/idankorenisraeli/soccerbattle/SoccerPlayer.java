@@ -16,13 +16,15 @@ public class SoccerPlayer {
 
     // Player will receive the points for attacks performed, and might win (return value)
     public boolean performAttack(SoccerAttack attack){
-        GameManager.getInstance().playedTurn();
+        boolean isWin;
         this.currentPoints += attack.getPoints();
         if(currentPoints >= MAX_POINTS) {
             currentPoints = MAX_POINTS; // Player win
-            return true;
-        }
-        return false; // Player didn't win yet
+            isWin = true;
+        } else
+            isWin = false;
+        GameManager.getInstance().playedTurn();
+        return isWin;
     }
 
     public String getName() {
