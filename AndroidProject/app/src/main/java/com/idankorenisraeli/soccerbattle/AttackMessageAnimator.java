@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
-// Using YoYo implemented package for animating views.
+// Using YoYo implemented package for animating attack notification.
 public class AttackMessageAnimator {
     private static final int MESSAGE_TIME = 1800; // in ms
 
@@ -34,11 +34,13 @@ public class AttackMessageAnimator {
             YoYo.with(Techniques.Flash).duration(MESSAGE_TIME).
                     onStart(startCallback).onEnd(endCallback).
                     playOn(attackMessage);
+            // Flash animation techniques makes the turn on and off of the text rapidly
         }
     }
 
     private String generateAttackString(Context context, String playerName, String attackName, int attackPoints){
         return context.getString(R.string.attack_message,playerName, attackName.toLowerCase(), attackPoints);
+        // Creating each text that should be shown at runtime
     }
 
 

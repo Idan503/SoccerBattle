@@ -3,7 +3,7 @@ package com.idankorenisraeli.soccerbattle;
 public class SoccerAttack {
     private String name;
     private int imageId;
-    private int points; // Receiving amount for player performing this attack
+    private int points; // Receiving points amount for performing this attack
 
     public SoccerAttack(String name, int points, int imageId) {
         this.name = name;

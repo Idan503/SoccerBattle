@@ -2,6 +2,7 @@ package com.idankorenisraeli.soccerbattle;
 
 import android.content.Context;
 
+// Various information about current status of the game
 public class GameManager {
     public enum PlayerTurn{LEFT, RIGHT, NONE}
 

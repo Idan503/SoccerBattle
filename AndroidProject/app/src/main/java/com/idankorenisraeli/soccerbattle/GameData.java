@@ -2,7 +2,7 @@ package com.idankorenisraeli.soccerbattle;
 
 import android.content.Context;
 
-// This class contains all game information loading on runtime
+// This class contains all game information which is loaded on runtime
 public class GameData {
 
     private static GameData single_instance = null;
@@ -55,7 +55,7 @@ public class GameData {
         return DRAWABLE_KEYS.BAR_GREEN_DRAWABLE_ID;
     }
 
-    public int getBackgroundId(){return DRAWABLE_KEYS.BACKGROUND_FIELD_DRAWABLE_ID;};
+    public int getBackgroundId(){return DRAWABLE_KEYS.BACKGROUND_FIELD_DRAWABLE_ID;}
 
     public SoccerPlayer getPlayerLeft(){
         return PLAYER_LEFT;

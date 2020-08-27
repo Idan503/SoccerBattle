@@ -7,7 +7,7 @@ public class MyApp extends Application {
     public void onCreate(){
     super.onCreate();
 
-
+    // Initiating Singletone with Application Context only.
     CommonUtils.initHelper(this);
 
     }

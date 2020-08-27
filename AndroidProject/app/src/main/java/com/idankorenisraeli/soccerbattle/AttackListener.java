@@ -1,6 +1,5 @@
 package com.idankorenisraeli.soccerbattle;
 
-import android.animation.Animator;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.View;
@@ -8,10 +7,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
-
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
-
+ 
 public class AttackListener implements View.OnClickListener {
     SoccerPlayer player;
     SoccerAttack attack;
