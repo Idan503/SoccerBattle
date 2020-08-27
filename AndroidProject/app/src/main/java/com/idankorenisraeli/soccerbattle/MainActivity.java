@@ -15,6 +15,9 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+
 public class MainActivity extends AppCompatActivity {
 
     // region Players Declarations
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout attacksLeft, attacksRight;
 
     AttackButtonsManager attackManager;
+    TextView attackMessage;
     // endregion
 
     // region Other Declarations
@@ -48,8 +52,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         initUI();
         startGame();
     }
@@ -104,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
         attackRightText1 = attacksRight.findViewById(R.id.attacks_text_1);
         attackRightText2 = attacksRight.findViewById(R.id.attacks_text_2);
         attackRightText3 = attacksRight.findViewById(R.id.attacks_text_3);
+
+        attackMessage = findViewById(R.id.attack_message);
     }
 
     // Using all UI views found and setting their texts/images
@@ -149,14 +153,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void setAttacksListeners(){
         SoccerAttack[] leftAttacks = playerLeft.getAttacks();
-        attackLeftLayout1.setOnClickListener(new AttackListener(playerLeft,leftAttacks[0],playerLeftBar));
-        attackLeftLayout2.setOnClickListener(new AttackListener(playerLeft,leftAttacks[1],playerLeftBar));
-        attackLeftLayout3.setOnClickListener(new AttackListener(playerLeft,leftAttacks[2],playerLeftBar));
+        // There might be more attack messages placeholder in the future, so it is passed in constructor too
+        attackLeftLayout1.setOnClickListener(new AttackListener(playerLeft,leftAttacks[0],playerLeftBar, attackMessage));
+        attackLeftLayout2.setOnClickListener(new AttackListener(playerLeft,leftAttacks[1],playerLeftBar, attackMessage));
+        attackLeftLayout3.setOnClickListener(new AttackListener(playerLeft,leftAttacks[2],playerLeftBar, attackMessage));
 
         SoccerAttack[] rightAttacks = playerRight.getAttacks();
-        attackRightLayout1.setOnClickListener(new AttackListener(playerRight,rightAttacks[0],playerRightBar));
-        attackRightLayout2.setOnClickListener(new AttackListener(playerRight,rightAttacks[1],playerRightBar));
-        attackRightLayout3.setOnClickListener(new AttackListener(playerRight,rightAttacks[2],playerRightBar));
+        attackRightLayout1.setOnClickListener(new AttackListener(playerRight,rightAttacks[0],playerRightBar, attackMessage));
+        attackRightLayout2.setOnClickListener(new AttackListener(playerRight,rightAttacks[1],playerRightBar, attackMessage));
+        attackRightLayout3.setOnClickListener(new AttackListener(playerRight,rightAttacks[2],playerRightBar, attackMessage));
     }
 
     // endregion
@@ -179,5 +184,13 @@ public class MainActivity extends AppCompatActivity {
         startGame();
     }
 
+
     // endregion
+
+    @Override
+    public void onBackPressed(){
+        finish();
+        android.os.Process.killProcess(android.os.Process.myPid());
+        // Guarantee application killed completely when user presses back button on this screen
+    }
 }

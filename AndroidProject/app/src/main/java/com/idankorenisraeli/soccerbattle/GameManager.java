@@ -3,16 +3,17 @@ package com.idankorenisraeli.soccerbattle;
 import android.content.Context;
 
 public class GameManager {
-    public enum PlayerTurn{LEFT, RIGHT, NONE};
+    public enum PlayerTurn{LEFT, RIGHT, NONE}
+
+    private static final PlayerTurn DEFAULT_FIRST_TURN = PlayerTurn.LEFT;
 
     private static GameManager single_instance = null;
     private int turnsPlayed;
-    private PlayerTurn currentTurn = PlayerTurn.LEFT;
-
-    public static final PlayerTurn DEFAULT_TURN = PlayerTurn.LEFT;
+    private PlayerTurn currentTurn;
 
     private GameManager(){
         turnsPlayed = 0;
+        currentTurn = DEFAULT_FIRST_TURN;
     }
 
     public static GameManager getInstance(){

@@ -1,23 +1,30 @@
 package com.idankorenisraeli.soccerbattle;
 
+import android.animation.Animator;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
+
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 
 public class AttackListener implements View.OnClickListener {
     SoccerPlayer player;
     SoccerAttack attack;
     SeekBar bar;
+    TextView message;
 
-    public AttackListener(SoccerPlayer player, SoccerAttack attack, SeekBar playerBar){
+
+    public AttackListener(SoccerPlayer player, SoccerAttack attack, SeekBar playerBar, TextView message){
         this.player = player;
         this.attack = attack;
-
-
         this.bar = playerBar;
+        this.message = message;
+        updateBarProgress(playerBar.getContext());
     }
 
     @Override
@@ -28,9 +35,11 @@ public class AttackListener implements View.OnClickListener {
 
             if (isWin) {
                 CommonUtils.getInstance().showToast(player.getName() + " Wins!");
+                GameManager.getInstance().setCurrentTurn(GameManager.PlayerTurn.NONE);
             }
 
             AttackButtonsManager.getInstance().updateAttackButtons(); // Updating UI Attack buttons
+            AttackMessageAnimator.getInstance().showMessage(message, player.getName(), attack.getName(), attack.getPoints());
         }
     }
 
@@ -55,6 +64,7 @@ public class AttackListener implements View.OnClickListener {
         }
         bar.setProgressDrawable(progress);
     }
+
 
 
 }

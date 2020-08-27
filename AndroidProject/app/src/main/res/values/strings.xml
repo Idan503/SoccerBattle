@@ -8,4 +8,8 @@
     <string name="player_1">player_1</string>
     <string name="player_2">player_2</string>
 
+    <string name="background">background</string>
+
+    <string name="attack_message">%1$s %2$s! (+%3$d points)</string>
+
 </resources>

@@ -7,10 +7,10 @@ import android.widget.FrameLayout;
 public class AttackButtonsManager {
     private static final float idleAlpha = 0.5f; // Opacity of buttons of player who doesn't play
 
-    private static AttackButtonsManager single_instance;
+    private static AttackButtonsManager single_instance = null;
 
-    FrameLayout[] leftAttackButtons;
-    FrameLayout[] rightAttackButtons;
+    private FrameLayout[] leftAttackButtons;
+    private FrameLayout[] rightAttackButtons;
 
     private AttackButtonsManager(FrameLayout[] leftArray, FrameLayout[] rightArray){
         leftAttackButtons = leftArray;
@@ -28,7 +28,6 @@ public class AttackButtonsManager {
     }
 
     public void updateAttackButtons(){
-        System.out.println(GameManager.getInstance().getCurrentTurn());
         switch (GameManager.getInstance().getCurrentTurn()){
             case LEFT:
                 setButtonsOn(leftAttackButtons);
