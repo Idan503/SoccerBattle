@@ -55,11 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/layout_attacks_left"
         />
-
-
-
-
-
+    
     <TextView
         android:layout_width="200dp"
         android:layout_height="65dp"

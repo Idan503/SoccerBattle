@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DiceFragment">
+        <!-- Custom attribute to the dice -->
+        <attr name="side" format="enum">
+            <!-- Enum should be written twice because there seem to be no Java automated extraction of enum -->
+            <enum name="LEFT" value="0"/>
+            <enum name="RIGHT" value="1"/>
+            <enum name="NONE" value="2"/>
+        </attr>
+    </declare-styleable>
+    
+    
+</resources>

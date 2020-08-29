@@ -4,13 +4,12 @@ import android.content.Context;
 
 // Various information about current status of the game
 public class GameManager {
-    public enum PlayerTurn{LEFT, RIGHT, NONE}
 
-    private static final PlayerTurn DEFAULT_FIRST_TURN = PlayerTurn.LEFT;
+    private static final PlayerSide DEFAULT_FIRST_TURN = PlayerSide.LEFT;
 
     private static GameManager single_instance = null;
     private int turnsPlayed;
-    private PlayerTurn currentTurn;
+    private PlayerSide currentTurn;
 
     private GameManager(){
         turnsPlayed = 0;
@@ -26,14 +25,14 @@ public class GameManager {
     public void playedTurn(){
         turnsPlayed++;
 
-        if(currentTurn==PlayerTurn.LEFT){
-            currentTurn = PlayerTurn.RIGHT;
+        if(currentTurn==PlayerSide.LEFT){
+            currentTurn = PlayerSide.RIGHT;
         }
-        else if(currentTurn==PlayerTurn.RIGHT)
-            currentTurn = PlayerTurn.LEFT;
+        else if(currentTurn==PlayerSide.RIGHT)
+            currentTurn = PlayerSide.LEFT;
 
         if(isGameOver())
-            currentTurn = PlayerTurn.NONE;
+            currentTurn = PlayerSide.NONE;
     }
 
     public int getTurnsPlayed(){
@@ -49,11 +48,11 @@ public class GameManager {
                 right.getCurrentPoints() >= SoccerPlayer.MAX_POINTS);
     }
 
-    public PlayerTurn getCurrentTurn() {
+    public PlayerSide getCurrentTurn() {
         return currentTurn;
     }
 
-    public void setCurrentTurn(PlayerTurn turn){
+    public void setCurrentTurn(PlayerSide turn){
         currentTurn = turn;
     }
 
