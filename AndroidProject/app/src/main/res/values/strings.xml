@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">SoccerBattle</string>
 
+    <!-- In-Game templates -->
     <string name="attack_1">attack_1</string>
     <string name="attack_2">attack_2</string>
     <string name="attack_3">attack_3</string>
@@ -8,16 +9,24 @@
     <string name="player_1">player_1</string>
     <string name="player_2">player_2</string>
 
+    <string name="attack_message">%1$s %2$s! (+%3$d points)</string>
+
+
+    <!-- Menu Buttons -->
     <string name="start_game">Start Game</string>
-    <string name="records_table">Records Table</string>
+    <string name="top_ten_table">Top 10 Table</string>
+    <string name="restart_game">Restart Game</string>
+    <string name="back_to_home">Back to Home</string>
 
     <string name="background">background</string>
 
+    <!-- Dice -->
     <string name="dice">Dice</string>
     <string name="roll_dice">Roll Dice</string>
 
-    <string name="attack_message">%1$s %2$s! (+%3$d points)</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Results -->
+    <string name="player_win">%1$s Win</string>
+    <string name="win_result_message">Proved that he is the best in %1$d turns</string>
+
 
 </resources>

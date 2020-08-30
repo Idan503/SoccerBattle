@@ -19,7 +19,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_screen);
+        setContentView(R.layout.activity_home);
         findViews();
         setBackgroundImage();
         context = this;
@@ -35,7 +35,7 @@ public class HomeActivity extends AppCompatActivity {
         tableButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, TableHighscoreActivity.class);
+                Intent intent = new Intent(HomeActivity.this, TopTenActivity.class);
                 startActivity(intent);
             }
         });
