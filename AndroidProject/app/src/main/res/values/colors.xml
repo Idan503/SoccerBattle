@@ -5,4 +5,9 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="attackButton">#E6E6E6</color>
     <color name="attackButtonOutline">#707070</color>
+
+
+    <!--Table-->
+    <color name="background_first_row">#B2ACACAC</color>
+    <color name="background_row">#79CDCDCD</color>
 </resources>

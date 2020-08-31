@@ -1,8 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TopTenActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="-1dp"
+        android:contentDescription="@string/background"
+        android:id="@+id/image_background"
+        android:scaleType="centerCrop"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="1dp"
+        android:orientation="vertical"
+        android:weightSum="1"
+        >
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:name="com.idankorenisraeli.soccerbattle.TopTenMap"
+            android:id="@+id/top_ten_map_fragment"
+            android:layout_marginTop="40dp"
+            />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:id="@+id/top_ten_table"
+            android:layout_height="0dp"
+            android:layout_weight="0.45"
+            android:showDividers="middle"
+            android:layout_marginTop="35dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            >
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:background="@color/background_first_row"
+                >
+
+                <TextView
+                    android:text="@string/hashtag"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    android:layout_weight="0.3"
+                    android:padding="5dp"
+                    android:gravity="center_horizontal"
+                    />
+
+                <TextView
+                    android:text="@string/name"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:gravity="center_horizontal"
+                    />
+
+                <TextView
+                    android:text="@string/turns_played"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:gravity="center_horizontal"
+                    />
+
+                <TextView
+                    android:text="@string/Location"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:gravity="center_horizontal"
+                    />
+
+            </TableRow>
+
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/table_row"
+                android:background="@color/background_row"
+                >
+
+                <TextView
+                    android:text="@string/not_applicable"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:layout_weight="0.3"
+                    android:padding="2dp"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/table_row_rank"
+                    />
+
+                <TextView
+                    android:text="@string/name"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:layout_weight="1"
+                    android:padding="2dp"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/table_row_name"
+                    />
+
+                <TextView
+                    android:text="@string/turns_played"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:layout_weight="1"
+                    android:padding="2dp"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/table_row_turns"
+                    />
+
+                <TextView
+                    android:text="@string/Location"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:layout_weight="1"
+                    android:padding="2dp"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/table_row_location"
+                    />
+
+            </TableRow>
+
+
+
+
+
+        </TableLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="0.1"
+            android:orientation="horizontal"
+            android:layout_gravity="bottom"
+            >
+
+            <Button
+                android:id="@+id/back_home_button"
+                android:layout_height="match_parent"
+                android:layout_width="160dp"
+                android:layout_marginStart="15dp"
+                android:autoSizeTextType="uniform"
+                android:background="@drawable/menu_button_background"
+                android:padding="16dp"
+                android:text="@string/back_to_home" />
+
+            <View
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                />
+
+            <Button
+                android:id="@+id/restart_game_button"
+                android:layout_width="160dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="15dp"
+                android:autoSizeTextType="uniform"
+                android:background="@drawable/menu_button_background"
+                android:padding="16dp"
+                android:text="@string/restart_game" />
+
+        </LinearLayout>
+
+        <!-- Invisible bottom margin weighted view -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.05"
+            />
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

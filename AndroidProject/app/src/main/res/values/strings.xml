@@ -28,5 +28,14 @@
     <string name="player_win">%1$s Win</string>
     <string name="win_result_message">Proved that he is the best in %1$d turns</string>
 
+    <!-- Table -->
+    <string name="name">Name</string>
+    <string name="turns_played">Turns</string>
+    <string name="data">Date</string>
+    <string name="Location">Location</string>
+    <string name="not_applicable">N/A</string>
+
+    <string name="hashtag">#</string>
+
 
 </resources>
