@@ -23,6 +23,7 @@ public class GameData {
         int BAR_GREEN_DRAWABLE_ID = R.drawable.seekbar_progress_green;
         int BAR_RED_DRAWABLE_ID = R.drawable.seekbar_progress_red;
         int BACKGROUND_FIELD_DRAWABLE_ID = R.drawable.background_soccer_field;
+
     }
 
     // region Default Attacks
@@ -37,8 +38,8 @@ public class GameData {
 
     // region Default Players
 
-    private static final SoccerPlayer PLAYER_LEFT = new SoccerPlayer("Messi", DRAWABLE_KEYS.PLAYER_LEFT_DRAWABLE_ID, DEFAULT_ATTACKS);
-    private static final SoccerPlayer PLAYER_RIGHT = new SoccerPlayer("Ronaldo", DRAWABLE_KEYS.PLAYER_RIGHT_DRAWABLE_ID, DEFAULT_ATTACKS);
+    private static SoccerPlayer PLAYER_LEFT = new SoccerPlayer("Messi", DRAWABLE_KEYS.PLAYER_LEFT_DRAWABLE_ID, DEFAULT_ATTACKS);
+    private static SoccerPlayer PLAYER_RIGHT = new SoccerPlayer("Ronaldo", DRAWABLE_KEYS.PLAYER_RIGHT_DRAWABLE_ID, DEFAULT_ATTACKS);
     // endregion
 
     // region Progress Bar
@@ -69,5 +70,10 @@ public class GameData {
         return GREEN_BAR_THRESHOLD;
     }
 
+    public void reset(){
+        //Re-creating players scripts
+        PLAYER_LEFT = new SoccerPlayer("Messi", DRAWABLE_KEYS.PLAYER_LEFT_DRAWABLE_ID, DEFAULT_ATTACKS);
+        PLAYER_RIGHT = new SoccerPlayer("Ronaldo", DRAWABLE_KEYS.PLAYER_RIGHT_DRAWABLE_ID, DEFAULT_ATTACKS);
+    }
 
 }

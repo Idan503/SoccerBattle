@@ -2,17 +2,20 @@ package com.idankorenisraeli.soccerbattle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-public class GameActivity extends AppCompatActivity {
-
+public class GameActivity extends AppCompatActivity implements  DiceRolledListener, GameFinishedListener{
     // region Players Declarations
 
     /*  The battle is player "Left" vs player "Right".
@@ -21,6 +24,11 @@ public class GameActivity extends AppCompatActivity {
     ImageView playerLeftImage, playerRightImage;
     SoccerPlayer playerLeft, playerRight;
     // endregion
+
+    //region Dice
+    DiceFragment leftDice, rightDice;
+    int[] diceResult = {0,0}; // When dice hasn't rolled yer, its value here is 0.
+    //endregion
 
     // region Attacks Declarations
 
@@ -45,8 +53,12 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        GameManager.initHelper(this);
+        if(savedInstanceState==null)
+            resetGame();
         initUI();
-        startGame();
+        initDice();
+        initGame();
     }
 
     // region Runtime Interface Initialisation
@@ -55,6 +67,17 @@ public class GameActivity extends AppCompatActivity {
         findViews();
         generatePlayers();
         setAttacksListeners();
+    }
+
+    private void initDice(){
+        leftDice = new DiceFragment();
+        rightDice = new DiceFragment();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.player_dice_left, leftDice);
+        ft.replace(R.id.player_dice_right, rightDice);
+        leftDice.setSide(PlayerSide.LEFT);
+        rightDice.setSide(PlayerSide.RIGHT);
+        ft.commit();
     }
 
     private void findViews(){
@@ -159,7 +182,7 @@ public class GameActivity extends AppCompatActivity {
 
     // endregion
 
-    private void startGame(){
+    private void initGame(){
         attackManager = AttackButtonsManager.initHelper(
                 new FrameLayout[]{attackLeftLayout1,attackLeftLayout2,attackLeftLayout3},
                 new FrameLayout[]{attackRightLayout1,attackRightLayout2,attackRightLayout3});
@@ -174,16 +197,78 @@ public class GameActivity extends AppCompatActivity {
         // Code gets to here after device is rotated
         // Our layout should be reloaded because of different version for landscape/portrait
         initUI();
-        startGame();
+        if(!bothDiceRolled())
+            resetDice(); // Prevent showing dice after game is started
+        initGame();
     }
 
 
     // endregion
 
+
     @Override
-    public void onBackPressed(){
-        finish();
-        android.os.Process.killProcess(android.os.Process.myPid());
-        // Guarantee application killed completely when user presses back button on this screen
+    public void onDiceRolled(int result, PlayerSide side) {
+        switch (side){
+            case LEFT:
+                diceResult[0] = result;
+                break;
+            case RIGHT:
+                diceResult[1] = result;
+                break;
+        }
+        if(bothDiceRolled())
+        {
+            // Code gets to here after both dice are rolled (non zero)
+            if(diceResult[0] == diceResult[1])
+            {
+                CommonUtils.getInstance().showToast("Dice draw, please roll again");
+                final int DELAY_BEFORE_RESET = 1500; // in ms, wait before dice restart to show tie result
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        resetDice();
+                    }
+                },DELAY_BEFORE_RESET);
+            }
+            else {
+                if(diceResult[0] > diceResult[1]){
+                    // Left player got higher result
+                    GameManager.getInstance().setCurrentTurn(PlayerSide.LEFT);
+                } else{
+                    // Right player got higher result
+                    GameManager.getInstance().setCurrentTurn(PlayerSide.RIGHT);
+                }
+                // Both dice shows different result from each other, game can be started
+                initGame();
+                leftDice.fadeOut();
+                rightDice.fadeOut();
+            }
+        }
     }
+
+    private void resetDice(){
+        diceResult[0] = 0;
+        diceResult[1] = 0;
+        initDice();
+    }
+
+    @Override
+    public void onGameFinished(int turns, PlayerSide winner) {
+        Intent intent = new Intent(GameActivity.this, ResultActivity.class);
+        intent.putExtra("WinnerPlayer", GameManager.getInstance().getCurrentTurn());
+        intent.putExtra("TurnsPlayed", GameManager.getInstance().getTurnsPlayed());
+        startActivity(intent);
+        finish();
+    }
+
+    private void resetGame(){
+        GameManager.getInstance().reset(this);
+        GameData.getInstance().reset();
+        resetDice();
+    }
+
+    private boolean bothDiceRolled(){
+        return diceResult[0] > 0 && diceResult[1] > 0;
+    }
+
 }

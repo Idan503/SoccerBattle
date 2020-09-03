@@ -1,6 +1,8 @@
 package com.idankorenisraeli.soccerbattle;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.SeekBar;
@@ -26,14 +28,8 @@ public class AttackListener implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if(!GameManager.getInstance().isGameOver()) {
-            boolean isWin = player.performAttack(attack);
+            player.performAttack(attack);
             updateBarProgress(view.getContext());
-
-            if (isWin) {
-                CommonUtils.getInstance().showToast(player.getName() + " Wins!");
-                GameManager.getInstance().setCurrentTurn(GameManager.PlayerTurn.NONE);
-            }
-
             AttackButtonsManager.getInstance().updateAttackButtons(); // Updating UI Attack buttons
             AttackMessageAnimator.getInstance().showMessage(message, player.getName(), attack.getName(), attack.getPoints());
         }

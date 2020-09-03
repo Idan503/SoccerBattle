@@ -56,6 +56,27 @@
         android:id="@+id/layout_attacks_left"
         />
 
+    <FrameLayout
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        app:layout_constraintStart_toEndOf="@id/layout_attacks_left"
+        android:id="@+id/player_dice_left"
+        app:layout_constraintTop_toTopOf="@id/layout_attacks_left"
+        app:layout_constraintBottom_toBottomOf="@id/layout_attacks_right"
+        android:layout_marginStart="35dp"
+        />
+
+    <FrameLayout
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        app:layout_constraintEnd_toStartOf="@id/layout_attacks_right"
+        android:id="@+id/player_dice_right"
+        app:layout_constraintTop_toTopOf="@id/layout_attacks_right"
+        app:layout_constraintBottom_toBottomOf="@id/layout_attacks_right"
+        android:layout_marginEnd="35dp"
+        />
+
+
 
     <include layout="@layout/layout_attacks"
         android:layout_width="100dp"

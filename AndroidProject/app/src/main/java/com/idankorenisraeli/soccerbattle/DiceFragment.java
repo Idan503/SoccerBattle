@@ -1,5 +1,6 @@
 package com.idankorenisraeli.soccerbattle;
 
+import android.animation.Animator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -18,6 +19,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+
 import java.util.Objects;
 import java.util.Random;
 
@@ -34,8 +38,10 @@ public class DiceFragment extends Fragment {
 
     private DiceRolledListener rolledListener;
 
-    private final static int CHANGE_COUNT = 5; // How many times dice will change before value shown determent
-    private final static int CHANGE_TICK = 500; // (in ms) When dice changes, what is the delay before next change
+    // Roll animation properties
+    private final static int CHANGE_COUNT = 10; // How many times dice will change before value shown determent
+    private final static int CHANGE_TICK = 150; // (in ms) When dice changes, what is the delay before next change
+    private final static int FADE_OUT_DURATION = 1500; // After both dice are rolled
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -78,10 +84,22 @@ public class DiceFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        System.out.println("Creating Dice");
+        super.onCreateView(inflater,container,savedInstanceState);
         return inflater.inflate(R.layout.fragment_dice, container, false);
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        try {
+            rolledListener = (DiceRolledListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + " must implement DiceRolledListener");
+        }
     }
 
     @Override
@@ -92,7 +110,6 @@ public class DiceFragment extends Fragment {
 
         int diceSideValue = a.getInt(R.styleable.DiceFragment_side, 2);
         this.side = PlayerSide.values()[diceSideValue];
-
         a.recycle();
     }
 
@@ -104,7 +121,8 @@ public class DiceFragment extends Fragment {
         rollButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                roll();
+                rollButton.setVisibility(View.GONE);
             }
         });
     }
@@ -158,5 +176,20 @@ public class DiceFragment extends Fragment {
                 CommonUtils.getInstance().setImageResource(diceImage, R.drawable.ic_dice_6);
                 break;
         }
+    }
+
+    public void setSide(PlayerSide side){
+        this.side = side;
+    }
+
+    public void fadeOut(){
+        YoYo.with(Techniques.FadeOut).duration(FADE_OUT_DURATION)
+                .onEnd(new YoYo.AnimatorCallback() {
+                    @Override
+                    public void call(Animator animator) {
+                        diceImage.setVisibility(View.GONE);
+                        rollButton.setVisibility(View.GONE);
+                    }
+                }).playOn(diceImage);
     }
 }
