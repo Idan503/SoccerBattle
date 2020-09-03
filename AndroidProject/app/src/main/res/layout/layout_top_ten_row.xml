@@ -1,0 +1,47 @@
+<TableRow android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:id="@+id/table_row"
+    android:background="@color/background_row"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:text="@string/not_applicable"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:layout_weight="0.3"
+        android:padding="2dp"
+        android:gravity="center_horizontal"
+        android:id="@+id/table_row_rank"
+        />
+
+    <TextView
+        android:text="@string/name"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:layout_weight="1"
+        android:padding="2dp"
+        android:gravity="center_horizontal"
+        android:id="@+id/table_row_name"
+        />
+
+    <TextView
+        android:text="@string/turns_played"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:layout_weight="1"
+        android:padding="2dp"
+        android:gravity="center_horizontal"
+        android:id="@+id/table_row_turns"
+        />
+
+    <TextView
+        android:text="@string/Location"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:layout_weight="1"
+        android:padding="2dp"
+        android:gravity="center_horizontal"
+        android:id="@+id/table_row_location"
+        />
+
+</TableRow>

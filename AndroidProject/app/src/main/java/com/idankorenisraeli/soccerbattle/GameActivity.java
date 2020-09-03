@@ -218,11 +218,11 @@ public class GameActivity extends AppCompatActivity implements  DiceRolledListen
         }
         if(bothDiceRolled())
         {
+            final int DELAY_BEFORE_RESET = 1500; // in ms, wait before dice restart to show tie result
             // Code gets to here after both dice are rolled (non zero)
             if(diceResult[0] == diceResult[1])
             {
                 CommonUtils.getInstance().showToast("Dice draw, please roll again");
-                final int DELAY_BEFORE_RESET = 1500; // in ms, wait before dice restart to show tie result
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -231,17 +231,23 @@ public class GameActivity extends AppCompatActivity implements  DiceRolledListen
                 },DELAY_BEFORE_RESET);
             }
             else {
+                // Calculating who win the dice
                 if(diceResult[0] > diceResult[1]){
-                    // Left player got higher result
                     GameManager.getInstance().setCurrentTurn(PlayerSide.LEFT);
                 } else{
-                    // Right player got higher result
                     GameManager.getInstance().setCurrentTurn(PlayerSide.RIGHT);
                 }
-                // Both dice shows different result from each other, game can be started
+
+                // Game can be started
                 initGame();
-                leftDice.fadeOut();
-                rightDice.fadeOut();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        leftDice.fadeOut();
+                        rightDice.fadeOut();
+                    }
+                },DELAY_BEFORE_RESET);
+
             }
         }
     }

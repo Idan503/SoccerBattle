@@ -183,6 +183,7 @@ public class DiceFragment extends Fragment {
     }
 
     public void fadeOut(){
+        rollButton.setVisibility(View.GONE);
         YoYo.with(Techniques.FadeOut).duration(FADE_OUT_DURATION)
                 .onEnd(new YoYo.AnimatorCallback() {
                     @Override

@@ -14,7 +14,7 @@ import android.widget.TextView;
 public class ResultActivity extends AppCompatActivity {
 
     TextView winnerTitle, resultMessage;
-    ImageView winnerImage;
+    ImageView backgroundImage, winnerImage;
     Button restartButton, topTenButton, backHomeButton;
 
     @Override
@@ -31,6 +31,9 @@ public class ResultActivity extends AppCompatActivity {
         if(winner!=null) {
             setContent(winner, numOfTurns);
         }
+
+        setBackgroundImage();
+
     }
 
     private void findViews(){
@@ -40,6 +43,7 @@ public class ResultActivity extends AppCompatActivity {
         restartButton = findViewById(R.id.restart_game_button);
         topTenButton = findViewById(R.id.top_ten_button);
         backHomeButton = findViewById(R.id.back_home_button);
+        backgroundImage = findViewById(R.id.image_background);
     }
 
     private void setContent(PlayerSide winner, int numOfTurns){
@@ -97,5 +101,10 @@ public class ResultActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void setBackgroundImage(){
+        // For background image
+        CommonUtils.getInstance().setImageResource(backgroundImage,GameData.getInstance().getBackgroundId());
     }
 }

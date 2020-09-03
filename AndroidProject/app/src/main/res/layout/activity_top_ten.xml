@@ -32,116 +32,14 @@
             android:layout_marginTop="40dp"
             />
 
-        <TableLayout
+        <fragment
             android:layout_width="match_parent"
-            android:id="@+id/top_ten_table"
             android:layout_height="0dp"
             android:layout_weight="0.45"
-            android:showDividers="middle"
+            android:id="@+id/fragment_table"
+            android:name="com.idankorenisraeli.soccerbattle.TopTenTable"
             android:layout_marginTop="35dp"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            >
-
-            <TableRow
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:background="@color/background_first_row"
-                >
-
-                <TextView
-                    android:text="@string/hashtag"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp"
-                    android:layout_weight="0.3"
-                    android:padding="5dp"
-                    android:gravity="center_horizontal"
-                    />
-
-                <TextView
-                    android:text="@string/name"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:gravity="center_horizontal"
-                    />
-
-                <TextView
-                    android:text="@string/turns_played"
-                    android:textSize="20sp"
-                    android:textColor="@android:color/black"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:gravity="center_horizontal"
-                    />
-
-                <TextView
-                    android:text="@string/Location"
-                    android:textSize="20sp"
-                    android:textColor="@android:color/black"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:gravity="center_horizontal"
-                    />
-
-            </TableRow>
-
-
-            <TableRow
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:id="@+id/table_row"
-                android:background="@color/background_row"
-                >
-
-                <TextView
-                    android:text="@string/not_applicable"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp"
-                    android:layout_weight="0.3"
-                    android:padding="2dp"
-                    android:gravity="center_horizontal"
-                    android:id="@+id/table_row_rank"
-                    />
-
-                <TextView
-                    android:text="@string/name"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp"
-                    android:layout_weight="1"
-                    android:padding="2dp"
-                    android:gravity="center_horizontal"
-                    android:id="@+id/table_row_name"
-                    />
-
-                <TextView
-                    android:text="@string/turns_played"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/black"
-                    android:layout_weight="1"
-                    android:padding="2dp"
-                    android:gravity="center_horizontal"
-                    android:id="@+id/table_row_turns"
-                    />
-
-                <TextView
-                    android:text="@string/Location"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/black"
-                    android:layout_weight="1"
-                    android:padding="2dp"
-                    android:gravity="center_horizontal"
-                    android:id="@+id/table_row_location"
-                    />
-
-            </TableRow>
-
-
-
-
-
-        </TableLayout>
+            />
 
         <LinearLayout
             android:layout_width="match_parent"

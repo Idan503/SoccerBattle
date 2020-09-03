@@ -28,10 +28,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/roll_dice"
+            android:elevation="1dp"
+            android:padding="15dp"
             android:autoSizeTextType="uniform"
             android:id="@+id/roll_button"
-            android:background="@drawable/menu_button_background"
-            android:alpha="0.65"
+            android:background="@android:color/white"
+            android:alpha="1"
             />
 
     </FrameLayout>

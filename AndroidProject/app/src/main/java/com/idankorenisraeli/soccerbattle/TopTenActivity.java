@@ -14,7 +14,6 @@ public class TopTenActivity extends AppCompatActivity {
 
     Fragment mapFragment;
     TableLayout table;
-    TableRow sampleRow;
     Button restartGameButton, backHomeButton;
 
     @Override
@@ -29,7 +28,6 @@ public class TopTenActivity extends AppCompatActivity {
     private void findViews(){
         mapFragment = getSupportFragmentManager().findFragmentById(R.id.top_ten_map_fragment);
         table = findViewById(R.id.top_ten_table);
-        sampleRow = findViewById(R.id.table_row);
         restartGameButton = findViewById(R.id.restart_game_button);
         backHomeButton = findViewById(R.id.back_home_button);
     }
