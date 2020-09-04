@@ -1,9 +1,16 @@
 package com.idankorenisraeli.soccerbattle.game;
 
 import android.content.Context;
+import android.util.Log;
 
+import com.google.gson.reflect.TypeToken;
+import com.idankorenisraeli.soccerbattle.common.SharedPrefsManager;
 import com.idankorenisraeli.soccerbattle.player.PlayerSide;
 import com.idankorenisraeli.soccerbattle.player.SoccerPlayer;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Objects;
 
 // Various information about current status of the game
 public class GameManager{
@@ -11,7 +18,7 @@ public class GameManager{
     private int turnsPlayed;
     private PlayerSide currentTurn;
 
-    public final boolean ROBOT_PLAYER = true; // Will a robot play the game?
+    public final boolean ROBOT_PLAYER = false; // Will a robot play the game?
 
     private GameFinishedListener finishedListener;
 
@@ -40,7 +47,7 @@ public class GameManager{
     public void playedTurn(){
         turnsPlayed++;
 
-        if(isGameOver()){
+        if(isGameOver() && finishedListener!=null){
             finishedListener.onGameFinished(turnsPlayed,currentTurn);
         }
 
@@ -76,4 +83,26 @@ public class GameManager{
         single_instance = new GameManager(context);
     }
 
+    public void saveResult(){
+        SharedPrefsManager prefs = SharedPrefsManager.getInstance();
+        TypeToken<ArrayList<GameResult>> token = new TypeToken<ArrayList<GameResult>>() {};
+        ArrayList<GameResult> allResults = prefs.getArray(SharedPrefsManager.KEYS.SP_ALL_RESULTS, token);
+        if(allResults == null)
+            allResults = new ArrayList<>();
+
+        allResults.add(new GameResult(Objects.requireNonNull(getCurrentPlayer()).getName(),turnsPlayed));
+        prefs.putArray(SharedPrefsManager.KEYS.SP_ALL_RESULTS,allResults);
+    }
+
+
+    // Getting the player that is has current turn
+    private SoccerPlayer getCurrentPlayer(){
+        switch (currentTurn){
+            case LEFT:
+                return GameData.getInstance().getPlayerLeft();
+            case RIGHT:
+                return GameData.getInstance().getPlayerRight();
+        }
+        return null;
+    }
 }

@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.idankorenisraeli.soccerbattle.common.CommonUtils;
 
 import java.util.Objects;
 
@@ -19,7 +20,6 @@ public class GameResult {
     private int turns;
     private LatLng location;
 
-    private static final int REQUEST_LOCATION = 1;
 
     public GameResult(String name, int turns, LatLng location) {
         this.name = name;
@@ -27,10 +27,10 @@ public class GameResult {
         this.location = location;
     }
 
-    public GameResult(Activity activity, String name, int turns) {
+    public GameResult(String name, int turns) {
         this.name = name;
         this.turns = turns;
-        this.location = getCurrentLocation(activity);
+        this.location = CommonUtils.getInstance().getCurrentLocation();
     }
 
     public String getName() {
@@ -57,19 +57,11 @@ public class GameResult {
         this.location = location;
     }
 
-    //Getting last known location with GPS permission
-    private LatLng getCurrentLocation(@NonNull Activity activity){
-        LocationManager locationManager = (LocationManager) activity.getSystemService(Context.LOCATION_SERVICE);
-        if(ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(Objects.requireNonNull(activity),new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_LOCATION);
-        } else{
-            Location currentLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-            if(currentLocation!=null){
-                return new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-            }
-        }
-        return null;
+
+    @NonNull
+    @Override
+    public String toString(){
+        return this.name + " won in " + this.turns;
     }
 
 }

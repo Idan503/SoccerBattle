@@ -148,7 +148,8 @@ public class DiceFragment extends Fragment {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                rolledListener.onDiceRolled(currentResult[0], side);
+                if(rolledListener!=null)
+                    rolledListener.onDiceRolled(currentResult[0], side);
             }
         }, CHANGE_TICK*CHANGE_COUNT);
     }

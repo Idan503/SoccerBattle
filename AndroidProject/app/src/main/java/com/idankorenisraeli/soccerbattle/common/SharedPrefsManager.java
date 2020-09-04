@@ -31,6 +31,7 @@ package com.idankorenisraeli.soccerbattle.common;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.internal.Primitives;
@@ -43,7 +44,7 @@ public class SharedPrefsManager {
 
 
     public interface KEYS {
-        public final static String SP_USER = "SP_ALL_RESULTS";
+        public final static String SP_ALL_RESULTS = "SP_ALL_RESULTS";
     }
 
 
@@ -156,6 +157,7 @@ public class SharedPrefsManager {
 
     public <T> void putArray(String KEY, ArrayList<T> array) {
         String json = new Gson().toJson(array);
+        Log.i("pttt", json);
         prefs.edit().putString(KEY, json).apply();
     }
 

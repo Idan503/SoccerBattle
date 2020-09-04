@@ -101,10 +101,8 @@ public class GameActivity extends AppCompatActivity implements DiceRolledListene
 
         playerLeftBar = findViewById(R.id.game_SB_player_left);
         playerRightBar = findViewById(R.id.game_SB_player_right);
-
         playerLeftImage = findViewById(R.id.game_IMG_player_left);
         playerRightImage = findViewById(R.id.game_IMG_player_right);
-
         backgroundImage = findViewById(R.id.common_IMG_background);
     }
 
@@ -286,6 +284,7 @@ public class GameActivity extends AppCompatActivity implements DiceRolledListene
 
     @Override
     public void onGameFinished(int turns, PlayerSide winner) {
+        GameManager.getInstance().saveResult();
         Intent intent = new Intent(GameActivity.this, ResultActivity.class);
         intent.putExtra("WinnerPlayer", GameManager.getInstance().getCurrentTurn());
         intent.putExtra("TurnsPlayed", GameManager.getInstance().getTurnsPlayed());
