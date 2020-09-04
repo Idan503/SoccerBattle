@@ -9,14 +9,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.idankorenisraeli.soccerbattle.R;
+import com.idankorenisraeli.soccerbattle.game.GameResult;
 
 public class TopTenMap extends Fragment  {
 
     private GoogleMap map;
+    private static final float MAP_CAMERA_ZOOM = 10f;
 
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
 
@@ -52,6 +56,19 @@ public class TopTenMap extends Fragment  {
             mapFragment.getMapAsync(callback);
         }
     }
+
+    public void setMarker(GameResult entry) {
+        if(entry.getLocation()==null)
+            return; // Prevent marker on unknown location
+        MarkerOptions markerOptions = new MarkerOptions();
+        map.clear(); // Deleting previous markers
+
+        markerOptions.position(entry.getLocation());
+        markerOptions.title(entry.getName() + " - " + entry.getTurns() + " turns");
+        map.addMarker(markerOptions);
+        map.animateCamera(CameraUpdateFactory.newLatLngZoom(markerOptions.getPosition(), MAP_CAMERA_ZOOM ));
+    }
+
 
     public GoogleMap getMap(){
         return map;

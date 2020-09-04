@@ -72,7 +72,7 @@ class OnAnimationStart implements YoYo.AnimatorCallback{
 class OnAnimationEnd implements YoYo.AnimatorCallback{
     View viewToDisable;
     private static final int FADE_OUT_TIME = 550; // in ms
-    private static final int DELAY = 800; // in ms
+    private static final int DELAY = 300; // in ms
 
     public OnAnimationEnd(View view){
         this.viewToDisable = view;

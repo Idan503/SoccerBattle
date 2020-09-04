@@ -1,5 +1,6 @@
 package com.idankorenisraeli.soccerbattle.game;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
@@ -83,14 +84,14 @@ public class GameManager{
         single_instance = new GameManager(context);
     }
 
-    public void saveResult(){
+    public void saveResult(Activity activity){
         SharedPrefsManager prefs = SharedPrefsManager.getInstance();
         TypeToken<ArrayList<GameResult>> token = new TypeToken<ArrayList<GameResult>>() {};
         ArrayList<GameResult> allResults = prefs.getArray(SharedPrefsManager.KEYS.SP_ALL_RESULTS, token);
         if(allResults == null)
             allResults = new ArrayList<>();
 
-        allResults.add(new GameResult(Objects.requireNonNull(getCurrentPlayer()).getName(),turnsPlayed));
+        allResults.add(new GameResult(activity, Objects.requireNonNull(getCurrentPlayer()).getName(),turnsPlayed));
         prefs.putArray(SharedPrefsManager.KEYS.SP_ALL_RESULTS,allResults);
     }
 

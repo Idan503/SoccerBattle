@@ -26,16 +26,15 @@
         <fragment
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.4"
+            android:layout_weight="0.35"
             android:name="com.idankorenisraeli.soccerbattle.top_ten.TopTenMap"
             android:id="@+id/top_ten_FRAG_map"
-            android:layout_marginTop="40dp"
             />
 
         <fragment
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.45"
+            android:layout_weight="0.5"
             android:id="@+id/top_ten_FRAG_table"
             android:name="com.idankorenisraeli.soccerbattle.top_ten.TopTenTable"
             android:layout_marginTop="35dp"
@@ -66,14 +65,14 @@
                 />
 
             <Button
-                android:id="@+id/top_ten_BTN_restart"
+                android:id="@+id/top_ten_BTN_start"
                 android:layout_width="160dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="15dp"
                 android:autoSizeTextType="uniform"
                 android:background="@drawable/menu_button_background"
                 android:padding="16dp"
-                android:text="@string/restart_game" />
+                android:text="@string/start_game" />
 
         </LinearLayout>
 

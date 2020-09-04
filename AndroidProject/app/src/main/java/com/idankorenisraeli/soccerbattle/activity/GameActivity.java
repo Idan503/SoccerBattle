@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -68,6 +69,8 @@ public class GameActivity extends AppCompatActivity implements DiceRolledListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         GameManager.initHelper(this);
+
+        Log.d("Created","GAME");
         if(savedInstanceState==null)
             resetGame();
         initUI();
@@ -91,7 +94,8 @@ public class GameActivity extends AppCompatActivity implements DiceRolledListene
         ft.replace(R.id.game_DICE_right, rightDice);
         leftDice.setSide(PlayerSide.LEFT);
         rightDice.setSide(PlayerSide.RIGHT);
-        ft.commit();
+        if(!isFinishing())
+            ft.commit();
     }
 
     private void findViews(){
@@ -279,16 +283,27 @@ public class GameActivity extends AppCompatActivity implements DiceRolledListene
     private void resetDice(){
         diceResult[0] = 0;
         diceResult[1] = 0;
+
+        // Killing any live-rolling dice, to prevent old result effecting
+        if(leftDice!=null && leftDice.isRolling())
+            leftDice.cancelRoll();
+        if(rightDice!=null && rightDice.isRolling())
+            rightDice.cancelRoll();
         initDice();
     }
 
     @Override
     public void onGameFinished(int turns, PlayerSide winner) {
-        GameManager.getInstance().saveResult();
+        GameManager.getInstance().saveResult(this);
         Intent intent = new Intent(GameActivity.this, ResultActivity.class);
         intent.putExtra("WinnerPlayer", GameManager.getInstance().getCurrentTurn());
         intent.putExtra("TurnsPlayed", GameManager.getInstance().getTurnsPlayed());
         startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed(){
         finish();
     }
 

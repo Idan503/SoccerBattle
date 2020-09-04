@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -27,6 +28,8 @@ public class HomeActivity extends AppCompatActivity {
         findViews();
         setBackgroundImage();
         context = this;
+
+        Log.d("Created","HOME");
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override

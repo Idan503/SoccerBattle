@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -54,16 +55,20 @@ public class CommonUtils {
         Toast.makeText(context,message, Toast.LENGTH_SHORT).show();
     }
 
-    //Getting last known location with GPS permission
-    public LatLng getCurrentLocation(){
-        LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-        if(ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(Objects.requireNonNull(((Activity) context)),new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_LOCATION);
+    //Getting last known location with GPS permission, we need activity here and not only context
+    public LatLng getCurrentLocation(Activity activity){
+        LocationManager locationManager = (LocationManager) activity.getSystemService(Context.LOCATION_SERVICE);
+        if(ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(Objects.requireNonNull(activity),new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_LOCATION);
         } else{
             Location currentLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
             if(currentLocation!=null){
                 return new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
+            }else{
+                currentLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                if(currentLocation!=null)
+                    return new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
             }
         }
         return null;

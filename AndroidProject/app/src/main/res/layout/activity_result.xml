@@ -74,7 +74,7 @@
             android:weightSum="1">
 
             <Button
-                android:id="@+id/top_ten_BTN_restart"
+                android:id="@+id/top_ten_BTN_start"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal|top"

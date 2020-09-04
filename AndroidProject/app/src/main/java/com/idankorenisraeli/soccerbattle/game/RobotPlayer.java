@@ -11,7 +11,7 @@ public class RobotPlayer {
     private FrameLayout[] leftAttacks;
     private FrameLayout[] rightAttacks;
 
-    private static final int WAIT_TIME = 2500; // Waiting time between each turn
+    private static final int WAIT_TIME = 2000; // Waiting time between each turn
 
     public RobotPlayer(FrameLayout[] left, FrameLayout[] right){
         leftAttacks = left;

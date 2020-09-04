@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -25,6 +26,8 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
+        Log.d("Created","RESULTS");
+
         PlayerSide winner = (PlayerSide) getIntent().getSerializableExtra("WinnerPlayer");
         int numOfTurns = getIntent().getIntExtra("TurnsPlayed", 0);
 
@@ -43,7 +46,7 @@ public class ResultActivity extends AppCompatActivity {
         winnerTitle = findViewById(R.id.results_LBL_title);
         resultMessage = findViewById(R.id.results_LBL_message);
         winnerImage = findViewById(R.id.results_IMG_winner);
-        restartButton = findViewById(R.id.top_ten_BTN_restart);
+        restartButton = findViewById(R.id.top_ten_BTN_start);
         topTenButton = findViewById(R.id.results_BTN_top_ten);
         backHomeButton = findViewById(R.id.top_ten_BTN_home);
         backgroundImage = findViewById(R.id.common_IMG_background);
@@ -109,5 +112,10 @@ public class ResultActivity extends AppCompatActivity {
     private void setBackgroundImage(){
         // For background image
         CommonUtils.getInstance().setImageResource(backgroundImage,GameData.getInstance().getBackgroundId());
+    }
+
+    @Override
+    public void onBackPressed(){
+        finish();
     }
 }

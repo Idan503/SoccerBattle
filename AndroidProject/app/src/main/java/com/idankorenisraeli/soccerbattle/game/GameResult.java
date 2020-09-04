@@ -27,10 +27,10 @@ public class GameResult {
         this.location = location;
     }
 
-    public GameResult(String name, int turns) {
+    public GameResult(Activity activity, String name, int turns) {
         this.name = name;
         this.turns = turns;
-        this.location = CommonUtils.getInstance().getCurrentLocation();
+        this.location = CommonUtils.getInstance().getCurrentLocation(activity);
     }
 
     public String getName() {

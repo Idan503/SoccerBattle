@@ -108,12 +108,14 @@ public class TopTenTable extends Fragment {
         SharedPrefsManager prefs = SharedPrefsManager.getInstance();
         TypeToken<ArrayList<GameResult>> token = new TypeToken<ArrayList<GameResult>>() {};
         allResults = prefs.getArray(SharedPrefsManager.KEYS.SP_ALL_RESULTS, token);
-        allResults.sort(new SortByTurns());
+        if(allResults!=null) {
+            allResults.sort(new SortByTurns());
 
-        for(int i=0;i<tableResults.length;i++){
-            if( i > allResults.size() - 1)
-                break;
-            tableResults[i] = allResults.get(i); // Copying part of all the results
+            for (int i = 0; i < tableResults.length; i++) {
+                if (i > allResults.size() - 1)
+                    break;
+                tableResults[i] = allResults.get(i); // Copying part of all the results
+            }
         }
     }
 
@@ -132,7 +134,7 @@ public class TopTenTable extends Fragment {
         TextView turns = tableRow.findViewById(R.id.table_row_LBL_turns);
         TextView location = tableRow.findViewById(R.id.table_row_LBL_location);
 
-        rank.setText(String.valueOf(lastTableRank));
+        rank.setText(String.valueOf(++lastTableRank));
         name.setText(entry.getName());
         turns.setText(String.valueOf(entry.getTurns()));
         location.setText(getAddressFromLocation(entry.getLocation()));
@@ -144,6 +146,8 @@ public class TopTenTable extends Fragment {
     // Converting the location (lat,lang) to a real address string
     private String getAddressFromLocation(LatLng location) {
         try {
+            if(location == null)
+                return "N/A"; // Couldn't detect location.
             Geocoder coder = new Geocoder(getActivity());
             List<Address> addressList = coder.getFromLocation(location.latitude, location.longitude, 1);
             if (addressList.size() == 0)

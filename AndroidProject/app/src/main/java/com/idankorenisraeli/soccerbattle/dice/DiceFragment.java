@@ -37,7 +37,8 @@ public class DiceFragment extends Fragment {
     private Button rollButton;
     private ImageView diceImage;
     private PlayerSide side;
-
+    private boolean rollCanceled = false;
+    private  boolean rolling = false;
     private DiceRolledListener rolledListener;
 
     // Roll animation properties
@@ -131,6 +132,7 @@ public class DiceFragment extends Fragment {
 
     // Roll 'animation' is the dice changing its drawable 'changeCount' times, last drawable is the result
     private void roll(){
+        rolling = true;
         final Handler handler = new Handler(Objects.requireNonNull(Looper.myLooper()));
         final Random rand = new Random();
         final int[] currentResult = new int[1];
@@ -148,7 +150,7 @@ public class DiceFragment extends Fragment {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(rolledListener!=null)
+                if(rolledListener!=null && !rollCanceled)
                     rolledListener.onDiceRolled(currentResult[0], side);
             }
         }, CHANGE_TICK*CHANGE_COUNT);
@@ -195,5 +197,13 @@ public class DiceFragment extends Fragment {
                         rollButton.setVisibility(View.GONE);
                     }
                 }).playOn(diceImage);
+    }
+
+    public void cancelRoll(){
+        rollCanceled = true;
+    }
+
+    public boolean isRolling(){
+        return rolling;
     }
 }
