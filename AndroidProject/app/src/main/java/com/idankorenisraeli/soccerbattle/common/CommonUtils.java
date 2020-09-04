@@ -1,9 +1,7 @@
-package com.idankorenisraeli.soccerbattle;
+package com.idankorenisraeli.soccerbattle.common;
 
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
 import android.content.Context;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 

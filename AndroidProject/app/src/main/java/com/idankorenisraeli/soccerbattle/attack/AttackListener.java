@@ -1,15 +1,17 @@
-package com.idankorenisraeli.soccerbattle;
+package com.idankorenisraeli.soccerbattle.attack;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
- 
+
+import com.idankorenisraeli.soccerbattle.game.GameData;
+import com.idankorenisraeli.soccerbattle.game.GameManager;
+import com.idankorenisraeli.soccerbattle.player.SoccerPlayer;
+
 public class AttackListener implements View.OnClickListener {
     SoccerPlayer player;
     SoccerAttack attack;

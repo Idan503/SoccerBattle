@@ -1,4 +1,4 @@
-package com.idankorenisraeli.soccerbattle;
+package com.idankorenisraeli.soccerbattle.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import com.idankorenisraeli.soccerbattle.common.CommonUtils;
+import com.idankorenisraeli.soccerbattle.R;
+import com.idankorenisraeli.soccerbattle.game.GameData;
 
 public class HomeActivity extends AppCompatActivity {
 

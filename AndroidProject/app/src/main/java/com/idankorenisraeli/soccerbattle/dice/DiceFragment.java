@@ -1,7 +1,6 @@
-package com.idankorenisraeli.soccerbattle;
+package com.idankorenisraeli.soccerbattle.dice;
 
 import android.animation.Animator;
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -21,6 +20,9 @@ import android.widget.ImageView;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.idankorenisraeli.soccerbattle.common.CommonUtils;
+import com.idankorenisraeli.soccerbattle.player.PlayerSide;
+import com.idankorenisraeli.soccerbattle.R;
 
 import java.util.Objects;
 import java.util.Random;

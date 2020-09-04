@@ -1,4 +1,4 @@
-package com.idankorenisraeli.soccerbattle;
+package com.idankorenisraeli.soccerbattle.attack;
 
 public class SoccerAttack {
     private String name;

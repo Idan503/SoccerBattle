@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TopTenActivity">
+    tools:context=".activity.TopTenActivity">
 
     <ImageView
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.4"
-            android:name="com.idankorenisraeli.soccerbattle.TopTenMap"
+            android:name="com.idankorenisraeli.soccerbattle.top_ten.TopTenMap"
             android:id="@+id/top_ten_map_fragment"
             android:layout_marginTop="40dp"
             />
@@ -37,7 +37,7 @@
             android:layout_height="0dp"
             android:layout_weight="0.45"
             android:id="@+id/fragment_table"
-            android:name="com.idankorenisraeli.soccerbattle.TopTenTable"
+            android:name="com.idankorenisraeli.soccerbattle.top_ten.TopTenTable"
             android:layout_marginTop="35dp"
             />
 

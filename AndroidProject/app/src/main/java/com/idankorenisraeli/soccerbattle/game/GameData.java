@@ -1,6 +1,8 @@
-package com.idankorenisraeli.soccerbattle;
+package com.idankorenisraeli.soccerbattle.game;
 
-import android.content.Context;
+import com.idankorenisraeli.soccerbattle.R;
+import com.idankorenisraeli.soccerbattle.attack.SoccerAttack;
+import com.idankorenisraeli.soccerbattle.player.SoccerPlayer;
 
 // This class contains all game information which is loaded on runtime
 public class GameData {

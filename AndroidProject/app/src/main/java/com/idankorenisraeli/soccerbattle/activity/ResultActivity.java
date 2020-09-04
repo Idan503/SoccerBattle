@@ -1,15 +1,18 @@
-package com.idankorenisraeli.soccerbattle;
+package com.idankorenisraeli.soccerbattle.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.idankorenisraeli.soccerbattle.common.CommonUtils;
+import com.idankorenisraeli.soccerbattle.player.PlayerSide;
+import com.idankorenisraeli.soccerbattle.R;
+import com.idankorenisraeli.soccerbattle.game.GameData;
 
 public class ResultActivity extends AppCompatActivity {
 

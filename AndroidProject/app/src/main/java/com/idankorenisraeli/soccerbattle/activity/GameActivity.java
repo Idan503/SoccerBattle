@@ -1,10 +1,9 @@
-package com.idankorenisraeli.soccerbattle;
+package com.idankorenisraeli.soccerbattle.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -15,7 +14,22 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-public class GameActivity extends AppCompatActivity implements  DiceRolledListener, GameFinishedListener{
+import com.idankorenisraeli.soccerbattle.common.CommonUtils;
+import com.idankorenisraeli.soccerbattle.game.RobotPlayer;
+import com.idankorenisraeli.soccerbattle.player.PlayerSide;
+import com.idankorenisraeli.soccerbattle.R;
+import com.idankorenisraeli.soccerbattle.player.SoccerPlayer;
+import com.idankorenisraeli.soccerbattle.attack.AttackButtonsManager;
+import com.idankorenisraeli.soccerbattle.attack.AttackListener;
+import com.idankorenisraeli.soccerbattle.attack.SoccerAttack;
+import com.idankorenisraeli.soccerbattle.dice.DiceFragment;
+import com.idankorenisraeli.soccerbattle.dice.DiceRolledListener;
+import com.idankorenisraeli.soccerbattle.game.GameData;
+import com.idankorenisraeli.soccerbattle.game.GameFinishedListener;
+import com.idankorenisraeli.soccerbattle.game.GameManager;
+
+public class GameActivity extends AppCompatActivity implements DiceRolledListener, GameFinishedListener {
+
     // region Players Declarations
 
     /*  The battle is player "Left" vs player "Right".
@@ -156,7 +170,7 @@ public class GameActivity extends AppCompatActivity implements  DiceRolledListen
         playerRightBar.setEnabled(false); // Prevent user change
 
         // For background image
-        utils.setImageResource(backgroundImage,GameData.getInstance().getBackgroundId());
+        utils.setImageResource(backgroundImage, GameData.getInstance().getBackgroundId());
     }
 
     private void generatePlayers(){
@@ -188,6 +202,18 @@ public class GameActivity extends AppCompatActivity implements  DiceRolledListen
                 new FrameLayout[]{attackRightLayout1,attackRightLayout2,attackRightLayout3});
 
         attackManager.updateAttackButtons();
+
+        if(bothDiceRolled() && GameManager.getInstance().ROBOT_PLAYER){
+            initRobot();
+        }
+
+    }
+
+    private void initRobot(){
+        FrameLayout[] leftAttacks = {attackLeftLayout1, attackLeftLayout2, attackLeftLayout3};
+        FrameLayout[] rightAttacks = {attackRightLayout1, attackRightLayout2, attackRightLayout3};
+        RobotPlayer robot = new RobotPlayer(leftAttacks, rightAttacks);
+        robot.play();
     }
 
     // region Rotation Configuration Handling
@@ -197,8 +223,8 @@ public class GameActivity extends AppCompatActivity implements  DiceRolledListen
         // Code gets to here after device is rotated
         // Our layout should be reloaded because of different version for landscape/portrait
         initUI();
-        if(!bothDiceRolled())
-            resetDice(); // Prevent showing dice after game is started
+        if(!bothDiceRolled()) // Prevent showing dice after game is started
+            resetDice(); // Re-render dice on screen
         initGame();
     }
 

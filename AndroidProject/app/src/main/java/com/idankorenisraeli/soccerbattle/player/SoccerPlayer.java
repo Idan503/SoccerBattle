@@ -1,4 +1,7 @@
-package com.idankorenisraeli.soccerbattle;
+package com.idankorenisraeli.soccerbattle.player;
+
+import com.idankorenisraeli.soccerbattle.attack.SoccerAttack;
+import com.idankorenisraeli.soccerbattle.game.GameManager;
 
 public class SoccerPlayer {
     private String name;

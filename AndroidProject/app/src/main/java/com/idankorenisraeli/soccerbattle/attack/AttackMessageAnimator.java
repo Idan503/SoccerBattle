@@ -1,7 +1,6 @@
-package com.idankorenisraeli.soccerbattle;
+package com.idankorenisraeli.soccerbattle.attack;
 
 import android.animation.Animator;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Handler;
 import android.view.View;
@@ -9,6 +8,7 @@ import android.widget.TextView;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.idankorenisraeli.soccerbattle.R;
 
 // Using YoYo implemented package for animating attack notification.
 public class AttackMessageAnimator {

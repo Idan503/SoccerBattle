@@ -1,8 +1,5 @@
-package com.idankorenisraeli.soccerbattle;
+package com.idankorenisraeli.soccerbattle.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
@@ -10,13 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
-import android.widget.TableRow;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.idankorenisraeli.soccerbattle.R;
+import com.idankorenisraeli.soccerbattle.game.GameResult;
+import com.idankorenisraeli.soccerbattle.top_ten.TopTenMap;
+import com.idankorenisraeli.soccerbattle.top_ten.TopTenTable;
 
 public class TopTenActivity extends FragmentActivity {
 
@@ -24,7 +22,7 @@ public class TopTenActivity extends FragmentActivity {
     TopTenTable table;
     Button restartGameButton, backHomeButton;
 
-    private final float MAP_CAMERA_ZOOM = 10f;
+    private static final float MAP_CAMERA_ZOOM = 10f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +74,8 @@ public class TopTenActivity extends FragmentActivity {
     }
 
 
-    private void setMapMarker(GoogleMap map, TableEntry entry) {
+
+    private void setMapMarker(GoogleMap map, GameResult entry) {
         MarkerOptions markerOptions = new MarkerOptions();
         map.clear(); // Deleting previous markers
 

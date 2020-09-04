@@ -1,7 +1,9 @@
-package com.idankorenisraeli.soccerbattle;
+package com.idankorenisraeli.soccerbattle.attack;
 
 
 import android.widget.FrameLayout;
+
+import com.idankorenisraeli.soccerbattle.game.GameManager;
 
 // This script is for enabling and disabling attack buttons when turn changes
 public class AttackButtonsManager {
@@ -45,7 +47,7 @@ public class AttackButtonsManager {
 
     private void setButtonsOn(FrameLayout[] buttons){
         for(FrameLayout button : buttons){
-            button.setClickable(true);
+            button.setClickable(!GameManager.getInstance().ROBOT_PLAYER); // When robot plays all buttons are disabled
             button.setAlpha(1f);
         }
     }

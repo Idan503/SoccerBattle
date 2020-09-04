@@ -1,7 +1,9 @@
-package com.idankorenisraeli.soccerbattle;
+package com.idankorenisraeli.soccerbattle.game;
 
-import android.app.Activity;
 import android.content.Context;
+
+import com.idankorenisraeli.soccerbattle.player.PlayerSide;
+import com.idankorenisraeli.soccerbattle.player.SoccerPlayer;
 
 // Various information about current status of the game
 public class GameManager{
@@ -9,7 +11,9 @@ public class GameManager{
     private int turnsPlayed;
     private PlayerSide currentTurn;
 
-    GameFinishedListener finishedListener;
+    public final boolean ROBOT_PLAYER = true; // Will a robot play the game?
+
+    private GameFinishedListener finishedListener;
 
     private GameManager(Context context){
         turnsPlayed = 0;
