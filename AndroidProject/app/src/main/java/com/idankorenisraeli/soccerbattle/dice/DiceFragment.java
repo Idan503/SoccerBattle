@@ -117,8 +117,8 @@ public class DiceFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        diceImage = view.findViewById(R.id.dice_image);
-        rollButton = view.findViewById(R.id.roll_button);
+        diceImage = view.findViewById(R.id.dice_IMG_source);
+        rollButton = view.findViewById(R.id.dice_BTN_roll);
 
         rollButton.setOnClickListener(new View.OnClickListener() {
             @Override

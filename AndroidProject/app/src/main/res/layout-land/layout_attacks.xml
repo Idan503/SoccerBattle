@@ -7,7 +7,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:id="@+id/attacks_layout_button_1"
+        android:id="@+id/attacks_LAY_1"
         android:layout_height="0dp"
         android:layout_weight="0.3"
         android:background="@drawable/attack_button_background"
@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:contentDescription="@string/attack_1"
-            android:id="@+id/attacks_image_1"
+            android:id="@+id/attacks_IMG_1"
             android:scaleType="centerInside"
             android:paddingTop="15dp"
             android:paddingBottom="35dp"
@@ -28,7 +28,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/attacks_text_1"
+            android:id="@+id/attacks_LBL_1"
             android:text="@string/attack_1"
             android:gravity="bottom|center_horizontal"
             android:paddingBottom="10dp"
@@ -41,7 +41,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:id="@+id/attacks_layout_button_2"
+        android:id="@+id/attacks_LAY_2"
         android:layout_height="0dp"
         android:layout_weight="0.3"
         android:background="@drawable/attack_button_background"
@@ -53,7 +53,7 @@
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:contentDescription="@string/attack_2"
-            android:id="@+id/attacks_image_2"
+            android:id="@+id/attacks_IMG_2"
             android:scaleType="centerInside"
             android:paddingTop="15dp"
             android:paddingBottom="35dp"
@@ -62,7 +62,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/attacks_text_2"
+            android:id="@+id/attacks_LBL_2"
             android:text="@string/attack_2"
             android:gravity="bottom|center_horizontal"
             android:paddingBottom="10dp"
@@ -74,7 +74,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:id="@+id/attacks_layout_button_3"
+        android:id="@+id/attacks_LAY_3"
         android:layout_height="0dp"
         android:layout_weight="0.3"
         android:background="@drawable/attack_button_background"
@@ -85,7 +85,7 @@
         <ImageView
             android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:id="@+id/attacks_image_3"
+            android:id="@+id/attacks_IMG_3"
             android:contentDescription="@string/attack_3"
             android:scaleType="centerInside"
             android:paddingTop="15dp"
@@ -95,7 +95,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/attacks_text_3"
+            android:id="@+id/attacks_LBL_3"
             android:text="@string/attack_3"
             android:gravity="bottom|center_horizontal"
             android:paddingBottom="10dp"

@@ -19,7 +19,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/dice_image"
+            android:id="@+id/dice_IMG_source"
             android:background="@drawable/ic_dice_1"
             android:contentDescription="@string/dice"
             />
@@ -31,7 +31,7 @@
             android:elevation="1dp"
             android:padding="15dp"
             android:autoSizeTextType="uniform"
-            android:id="@+id/roll_button"
+            android:id="@+id/dice_BTN_roll"
             android:background="@android:color/white"
             android:alpha="1"
             />

@@ -49,9 +49,9 @@ public class HomeActivity extends AppCompatActivity {
 
 
     private void findViews(){
-        backgroundImage = findViewById(R.id.image_background);
-        startButton = findViewById(R.id.home_start_button);
-        tableButton = findViewById(R.id.home_records_table_button);
+        backgroundImage = findViewById(R.id.common_IMG_background);
+        startButton = findViewById(R.id.home_BTN_start);
+        tableButton = findViewById(R.id.home_BTN_top_ten);
     }
 
     private void setBackgroundImage(){

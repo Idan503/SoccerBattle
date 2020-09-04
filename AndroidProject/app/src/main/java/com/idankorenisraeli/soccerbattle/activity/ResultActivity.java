@@ -40,13 +40,13 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     private void findViews(){
-        winnerTitle = findViewById(R.id.winner_title_text);
-        resultMessage = findViewById(R.id.result_message_text);
-        winnerImage = findViewById(R.id.winner_image);
-        restartButton = findViewById(R.id.restart_game_button);
-        topTenButton = findViewById(R.id.top_ten_button);
-        backHomeButton = findViewById(R.id.back_home_button);
-        backgroundImage = findViewById(R.id.image_background);
+        winnerTitle = findViewById(R.id.results_LBL_title);
+        resultMessage = findViewById(R.id.results_LBL_message);
+        winnerImage = findViewById(R.id.results_IMG_winner);
+        restartButton = findViewById(R.id.top_ten_BTN_restart);
+        topTenButton = findViewById(R.id.results_BTN_top_ten);
+        backHomeButton = findViewById(R.id.top_ten_BTN_home);
+        backgroundImage = findViewById(R.id.common_IMG_background);
     }
 
     private void setContent(PlayerSide winner, int numOfTurns){

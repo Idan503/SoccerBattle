@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:elevation="-1dp"
         android:contentDescription="@string/background"
-        android:id="@+id/image_background"
+        android:id="@+id/common_IMG_background"
         android:scaleType="fitXY"
         />
 
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginStart="20dp"
-        android:id="@+id/layout_player_left"
+        android:id="@+id/game_LAY_player_left"
         >
         
         <SeekBar
@@ -32,13 +32,13 @@
             android:thumb="@android:color/transparent"
             android:clickable="false"
             android:progressDrawable="@drawable/seekbar_progress_red"
-            android:id="@+id/bar_player_left"
+            android:id="@+id/game_SB_player_left"
             />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/image_player_left"
+            android:id="@+id/game_IMG_player_left"
             android:contentDescription="@string/player_1"
             android:scaleType="fitXY"
             />
@@ -49,30 +49,30 @@
     <include layout="@layout/layout_attacks"
         android:layout_width="100dp"
         android:layout_height="match_parent"
-        app:layout_constraintStart_toEndOf="@+id/layout_player_left"
+        app:layout_constraintStart_toEndOf="@+id/game_LAY_player_left"
         android:layout_marginStart="10dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:id="@+id/layout_attacks_left"
+        android:id="@+id/game_LAY_attacks_left"
         />
 
     <FrameLayout
         android:layout_width="75dp"
         android:layout_height="75dp"
-        app:layout_constraintStart_toEndOf="@id/layout_attacks_left"
-        android:id="@+id/player_dice_left"
-        app:layout_constraintTop_toTopOf="@id/layout_attacks_left"
-        app:layout_constraintBottom_toBottomOf="@id/layout_attacks_right"
+        app:layout_constraintStart_toEndOf="@id/game_LAY_attacks_left"
+        android:id="@+id/game_DICE_left"
+        app:layout_constraintTop_toTopOf="@id/game_LAY_attacks_left"
+        app:layout_constraintBottom_toBottomOf="@id/game_LAY_attacks_right"
         android:layout_marginStart="35dp"
         />
 
     <FrameLayout
         android:layout_width="75dp"
         android:layout_height="75dp"
-        app:layout_constraintEnd_toStartOf="@id/layout_attacks_right"
-        android:id="@+id/player_dice_right"
-        app:layout_constraintTop_toTopOf="@id/layout_attacks_right"
-        app:layout_constraintBottom_toBottomOf="@id/layout_attacks_right"
+        app:layout_constraintEnd_toStartOf="@id/game_LAY_attacks_right"
+        android:id="@+id/game_DICE_right"
+        app:layout_constraintTop_toTopOf="@id/game_LAY_attacks_right"
+        app:layout_constraintBottom_toBottomOf="@id/game_LAY_attacks_right"
         android:layout_marginEnd="35dp"
         />
 
@@ -81,11 +81,11 @@
     <include layout="@layout/layout_attacks"
         android:layout_width="100dp"
         android:layout_height="match_parent"
-        app:layout_constraintEnd_toStartOf="@id/layout_player_right"
+        app:layout_constraintEnd_toStartOf="@id/game_LAY_player_right"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:id="@+id/layout_attacks_right"
+        android:id="@+id/game_LAY_attacks_right"
         />
 
     <LinearLayout
@@ -96,7 +96,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginEnd="20dp"
-        android:id="@+id/layout_player_right"
+        android:id="@+id/game_LAY_player_right"
         >
 
         <SeekBar
@@ -105,13 +105,13 @@
             android:thumb="@android:color/transparent"
             android:clickable="false"
             android:progressDrawable="@drawable/seekbar_progress_red"
-            android:id="@+id/bar_player_right"
+            android:id="@+id/game_SB_player_right"
             />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/image_player_right"
+            android:id="@+id/game_IMG_player_right"
             android:contentDescription="@string/player_1"
             android:scaleType="fitXY"
             />
@@ -121,7 +121,7 @@
     <TextView
         android:layout_width="200dp"
         android:layout_height="65dp"
-        android:id="@+id/attack_message"
+        android:id="@+id/game_LBL_attack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

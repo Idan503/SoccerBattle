@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:elevation="-1dp"
         android:contentDescription="@string/background"
-        android:id="@+id/image_background"
+        android:id="@+id/common_IMG_background"
         android:scaleType="centerCrop"
         />
 
@@ -21,7 +21,7 @@
         android:elevation="1dp"
         android:orientation="vertical"
         android:layout_marginTop="70dp"
-        android:id="@+id/winner_information_layout"
+        android:id="@+id/results_LAY_info"
         >
         <TextView
             android:layout_width="match_parent"
@@ -30,14 +30,14 @@
             android:autoSizeTextType="uniform"
             android:gravity="center"
             android:padding="20dp"
-            android:id="@+id/winner_title_text"
+            android:id="@+id/results_LBL_title"
             android:textColor="@android:color/white"
             />
 
         <ImageView
             android:layout_width="140dp"
             android:layout_height="140dp"
-            android:id="@+id/winner_image"
+            android:id="@+id/results_IMG_winner"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:contentDescription="@string/player_win"
@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginTop="50dp"
-            android:id="@+id/result_message_text"
+            android:id="@+id/results_LBL_message"
             android:text="@string/win_result_message"
             android:autoSizeTextType="uniform"
             android:gravity="center"
@@ -74,7 +74,7 @@
             android:weightSum="1">
 
             <Button
-                android:id="@+id/restart_game_button"
+                android:id="@+id/top_ten_BTN_restart"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal|top"
@@ -91,7 +91,7 @@
                 android:layout_weight="0.1" />
 
             <Button
-                android:id="@+id/top_ten_button"
+                android:id="@+id/results_BTN_top_ten"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal|top"
@@ -106,7 +106,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/back_home_button"
+            android:id="@+id/top_ten_BTN_home"
             android:layout_width="220dp"
             android:layout_height="60dp"
             android:layout_gravity="center_horizontal|top"

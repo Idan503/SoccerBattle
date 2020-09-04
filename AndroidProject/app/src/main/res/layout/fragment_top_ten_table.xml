@@ -9,7 +9,7 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/top_ten_table"
+        android:id="@+id/top_ten_LAY_table"
         android:showDividers="middle"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"

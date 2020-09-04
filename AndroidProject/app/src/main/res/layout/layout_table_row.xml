@@ -12,7 +12,7 @@
         android:layout_weight="0.3"
         android:padding="2dp"
         android:gravity="center_horizontal"
-        android:id="@+id/table_row_rank"
+        android:id="@+id/table_row_LBL_rank"
         />
 
     <TextView
@@ -22,7 +22,7 @@
         android:layout_weight="1"
         android:padding="2dp"
         android:gravity="center_horizontal"
-        android:id="@+id/table_row_name"
+        android:id="@+id/table_row_LBL_name"
         />
 
     <TextView
@@ -32,7 +32,7 @@
         android:layout_weight="1"
         android:padding="2dp"
         android:gravity="center_horizontal"
-        android:id="@+id/table_row_turns"
+        android:id="@+id/table_row_LBL_turns"
         />
 
     <TextView
@@ -42,7 +42,7 @@
         android:layout_weight="1"
         android:padding="2dp"
         android:gravity="center_horizontal"
-        android:id="@+id/table_row_location"
+        android:id="@+id/table_row_LBL_location"
         />
 
 </TableRow>

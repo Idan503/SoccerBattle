@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:elevation="-1dp"
         android:contentDescription="@string/background"
-        android:id="@+id/image_background"
+        android:id="@+id/common_IMG_background"
         android:scaleType="centerCrop"
         />
 
@@ -28,7 +28,7 @@
             android:layout_height="0dp"
             android:layout_weight="0.4"
             android:name="com.idankorenisraeli.soccerbattle.top_ten.TopTenMap"
-            android:id="@+id/top_ten_map_fragment"
+            android:id="@+id/top_ten_FRAG_map"
             android:layout_marginTop="40dp"
             />
 
@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.45"
-            android:id="@+id/fragment_table"
+            android:id="@+id/top_ten_FRAG_table"
             android:name="com.idankorenisraeli.soccerbattle.top_ten.TopTenTable"
             android:layout_marginTop="35dp"
             />
@@ -51,7 +51,7 @@
             >
 
             <Button
-                android:id="@+id/back_home_button"
+                android:id="@+id/top_ten_BTN_home"
                 android:layout_height="match_parent"
                 android:layout_width="160dp"
                 android:layout_marginStart="15dp"
@@ -66,7 +66,7 @@
                 />
 
             <Button
-                android:id="@+id/restart_game_button"
+                android:id="@+id/top_ten_BTN_restart"
                 android:layout_width="160dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="15dp"

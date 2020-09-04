@@ -87,57 +87,57 @@ public class GameActivity extends AppCompatActivity implements DiceRolledListene
         leftDice = new DiceFragment();
         rightDice = new DiceFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.player_dice_left, leftDice);
-        ft.replace(R.id.player_dice_right, rightDice);
+        ft.replace(R.id.game_DICE_left, leftDice);
+        ft.replace(R.id.game_DICE_right, rightDice);
         leftDice.setSide(PlayerSide.LEFT);
         rightDice.setSide(PlayerSide.RIGHT);
         ft.commit();
     }
 
     private void findViews(){
-        attacksLeft = findViewById(R.id.layout_attacks_left);
-        attacksRight = findViewById(R.id.layout_attacks_right);
+        attacksLeft = findViewById(R.id.game_LAY_attacks_left);
+        attacksRight = findViewById(R.id.game_LAY_attacks_right);
         findAttackViews();
 
-        playerLeftBar = findViewById(R.id.bar_player_left);
-        playerRightBar = findViewById(R.id.bar_player_right);
+        playerLeftBar = findViewById(R.id.game_SB_player_left);
+        playerRightBar = findViewById(R.id.game_SB_player_right);
 
-        playerLeftImage = findViewById(R.id.image_player_left);
-        playerRightImage = findViewById(R.id.image_player_right);
+        playerLeftImage = findViewById(R.id.game_IMG_player_left);
+        playerRightImage = findViewById(R.id.game_IMG_player_right);
 
-        backgroundImage = findViewById(R.id.image_background);
+        backgroundImage = findViewById(R.id.common_IMG_background);
     }
 
     // Attack views are inside different included layouts
     private void findAttackViews(){
         // Clickable layouts of attacks - buttons
-        attackLeftLayout1 = attacksLeft.findViewById(R.id.attacks_layout_button_1);
-        attackLeftLayout2 = attacksLeft.findViewById(R.id.attacks_layout_button_2);
-        attackLeftLayout3 = attacksLeft.findViewById(R.id.attacks_layout_button_3);
+        attackLeftLayout1 = attacksLeft.findViewById(R.id.attacks_LAY_1);
+        attackLeftLayout2 = attacksLeft.findViewById(R.id.attacks_LAY_2);
+        attackLeftLayout3 = attacksLeft.findViewById(R.id.attacks_LAY_3);
 
-        attackRightLayout1 = attacksRight.findViewById(R.id.attacks_layout_button_1);
-        attackRightLayout2 = attacksRight.findViewById(R.id.attacks_layout_button_2);
-        attackRightLayout3 = attacksRight.findViewById(R.id.attacks_layout_button_3);
+        attackRightLayout1 = attacksRight.findViewById(R.id.attacks_LAY_1);
+        attackRightLayout2 = attacksRight.findViewById(R.id.attacks_LAY_2);
+        attackRightLayout3 = attacksRight.findViewById(R.id.attacks_LAY_3);
 
         // Images of the attacks
-        attackLeftImage1 = attacksLeft.findViewById(R.id.attacks_image_1);
-        attackLeftImage2 = attacksLeft.findViewById(R.id.attacks_image_2);
-        attackLeftImage3 = attacksLeft.findViewById(R.id.attacks_image_3);
+        attackLeftImage1 = attacksLeft.findViewById(R.id.attacks_IMG_1);
+        attackLeftImage2 = attacksLeft.findViewById(R.id.attacks_IMG_2);
+        attackLeftImage3 = attacksLeft.findViewById(R.id.attacks_IMG_3);
 
-        attackRightImage1 = attacksRight.findViewById(R.id.attacks_image_1);
-        attackRightImage2 = attacksRight.findViewById(R.id.attacks_image_2);
-        attackRightImage3 = attacksRight.findViewById(R.id.attacks_image_3);
+        attackRightImage1 = attacksRight.findViewById(R.id.attacks_IMG_1);
+        attackRightImage2 = attacksRight.findViewById(R.id.attacks_IMG_2);
+        attackRightImage3 = attacksRight.findViewById(R.id.attacks_IMG_3);
 
         // Texts of names of attacks
-        attackLeftText1 = attacksLeft.findViewById(R.id.attacks_text_1);
-        attackLeftText2 = attacksLeft.findViewById(R.id.attacks_text_2);
-        attackLeftText3 = attacksLeft.findViewById(R.id.attacks_text_3);
+        attackLeftText1 = attacksLeft.findViewById(R.id.attacks_LBL_1);
+        attackLeftText2 = attacksLeft.findViewById(R.id.attacks_LBL_2);
+        attackLeftText3 = attacksLeft.findViewById(R.id.attacks_LBL_3);
 
-        attackRightText1 = attacksRight.findViewById(R.id.attacks_text_1);
-        attackRightText2 = attacksRight.findViewById(R.id.attacks_text_2);
-        attackRightText3 = attacksRight.findViewById(R.id.attacks_text_3);
+        attackRightText1 = attacksRight.findViewById(R.id.attacks_LBL_1);
+        attackRightText2 = attacksRight.findViewById(R.id.attacks_LBL_2);
+        attackRightText3 = attacksRight.findViewById(R.id.attacks_LBL_3);
 
-        attackMessage = findViewById(R.id.attack_message);
+        attackMessage = findViewById(R.id.game_LBL_attack);
     }
 
     // Using all UI views found and setting their texts/images

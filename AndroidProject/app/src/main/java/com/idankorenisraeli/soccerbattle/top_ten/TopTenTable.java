@@ -81,7 +81,7 @@ public class TopTenTable extends Fragment {
         // Inflate the layout for this fragment
 
         ViewGroup fragmentView = (ViewGroup) inflater.inflate(R.layout.fragment_top_ten_table, container, false);
-        table = fragmentView.findViewById(R.id.top_ten_table);
+        table = fragmentView.findViewById(R.id.top_ten_LAY_table);
 
         entries[0] = new GameResult(getActivity(),"Idan", 6);
 
@@ -100,10 +100,10 @@ public class TopTenTable extends Fragment {
     private void addRow(GameResult entry){
         View tableRow = LayoutInflater.from(getActivity()).inflate(R.layout.layout_table_row, table, false);
 
-        TextView rank = tableRow.findViewById(R.id.table_row_rank);
-        TextView name = tableRow.findViewById(R.id.table_row_name);
-        TextView turns = tableRow.findViewById(R.id.table_row_turns);
-        TextView location = tableRow.findViewById(R.id.table_row_location);
+        TextView rank = tableRow.findViewById(R.id.table_row_LBL_rank);
+        TextView name = tableRow.findViewById(R.id.table_row_LBL_name);
+        TextView turns = tableRow.findViewById(R.id.table_row_LBL_turns);
+        TextView location = tableRow.findViewById(R.id.table_row_LBL_location);
 
         rank.setText("" + ++lastTableRank);
         name.setText(entry.getName());

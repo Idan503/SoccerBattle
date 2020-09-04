@@ -34,10 +34,10 @@ public class TopTenActivity extends FragmentActivity {
     }
 
     private void findViews(){
-        map = (TopTenMap) getSupportFragmentManager().findFragmentById(R.id.top_ten_map_fragment);
-        table = (TopTenTable) getSupportFragmentManager().findFragmentById(R.id.fragment_table);
-        restartGameButton = findViewById(R.id.restart_game_button);
-        backHomeButton = findViewById(R.id.back_home_button);
+        map = (TopTenMap) getSupportFragmentManager().findFragmentById(R.id.top_ten_FRAG_map);
+        table = (TopTenTable) getSupportFragmentManager().findFragmentById(R.id.top_ten_FRAG_table);
+        restartGameButton = findViewById(R.id.top_ten_BTN_restart);
+        backHomeButton = findViewById(R.id.top_ten_BTN_home);
     }
 
     private void initButtons(){
