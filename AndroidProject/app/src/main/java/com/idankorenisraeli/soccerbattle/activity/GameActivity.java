@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
@@ -46,6 +47,7 @@ public class GameActivity extends AppCompatActivity implements DiceRolledListene
     DiceFragment leftDice, rightDice;
     int[] diceResult = {0,0}; // When dice hasn't rolled yer, its value here is 0.
     //endregion
+
 
     // region Attacks Declarations
 
@@ -200,6 +202,7 @@ public class GameActivity extends AppCompatActivity implements DiceRolledListene
     // endregion
 
     private void initGame(){
+
         attackManager = AttackButtonsManager.initHelper(
                 new FrameLayout[]{attackLeftLayout1,attackLeftLayout2,attackLeftLayout3},
                 new FrameLayout[]{attackRightLayout1,attackRightLayout2,attackRightLayout3});
@@ -215,6 +218,7 @@ public class GameActivity extends AppCompatActivity implements DiceRolledListene
     private void initRobot(){
         FrameLayout[] leftAttacks = {attackLeftLayout1, attackLeftLayout2, attackLeftLayout3};
         FrameLayout[] rightAttacks = {attackRightLayout1, attackRightLayout2, attackRightLayout3};
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // Robot can't recognize orientation change on runtime
         RobotPlayer robot = RobotPlayer.initHelper(leftAttacks, rightAttacks);
         robot.play();
     }
@@ -324,6 +328,7 @@ public class GameActivity extends AppCompatActivity implements DiceRolledListene
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         GameManager.getInstance().resume();
+                        RobotPlayer.getInstance().play();
                     }
                 });
 
@@ -346,8 +351,7 @@ public class GameActivity extends AppCompatActivity implements DiceRolledListene
     private void resetGame(){
         GameManager.getInstance().reset(this);
         GameData.getInstance().reset();
-        if(GameManager.getInstance().ROBOT_PLAYER)
-            RobotPlayer.reset();
+        RobotPlayer.reset();
         resetDice();
     }
 

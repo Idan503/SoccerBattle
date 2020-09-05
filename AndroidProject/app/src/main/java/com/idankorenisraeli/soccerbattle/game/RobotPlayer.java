@@ -37,9 +37,9 @@ public class RobotPlayer {
             @Override
             public void run() {
                 GameManager manager = GameManager.getInstance();
-                if(manager.isPaused())
+                if(!manager.isPaused())
                     performRandomAttack(manager.getCurrentTurn());
-                if(!manager.isGameOver() && manager.isPaused())
+                if(!manager.isGameOver() && !manager.isPaused())
                     play();
             }
         }, WAIT_TIME);
@@ -60,6 +60,7 @@ public class RobotPlayer {
                 break;
         }
     }
+
 
     public static void reset(){
         single_instance = null;

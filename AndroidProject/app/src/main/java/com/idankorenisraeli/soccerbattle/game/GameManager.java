@@ -115,7 +115,8 @@ public class GameManager{
     }
 
     public boolean isPaused(){
-        return !paused;
+        return paused;
     }
+
 
 }
