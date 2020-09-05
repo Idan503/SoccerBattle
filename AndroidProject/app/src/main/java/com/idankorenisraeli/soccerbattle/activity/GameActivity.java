@@ -215,7 +215,7 @@ public class GameActivity extends AppCompatActivity implements DiceRolledListene
     private void initRobot(){
         FrameLayout[] leftAttacks = {attackLeftLayout1, attackLeftLayout2, attackLeftLayout3};
         FrameLayout[] rightAttacks = {attackRightLayout1, attackRightLayout2, attackRightLayout3};
-        RobotPlayer robot = new RobotPlayer(leftAttacks, rightAttacks);
+        RobotPlayer robot = RobotPlayer.initHelper(leftAttacks, rightAttacks);
         robot.play();
     }
 
@@ -281,6 +281,8 @@ public class GameActivity extends AppCompatActivity implements DiceRolledListene
         }
     }
 
+
+
     private void resetDice(){
         diceResult[0] = 0;
         diceResult[1] = 0;
@@ -306,6 +308,7 @@ public class GameActivity extends AppCompatActivity implements DiceRolledListene
     @Override
     public void onBackPressed(){
         // Asking user before exit game
+        GameManager.getInstance().pause();
         MaterialDialogProperties properties = new MaterialDialogProperties(this,
                 "Exit Game", "Exit", "Cancel",
                 "Are you sure?\n" +
@@ -313,16 +316,38 @@ public class GameActivity extends AppCompatActivity implements DiceRolledListene
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        GameManager.getInstance().pause();
                         finish();
                     }
-                },null);
+                },
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        GameManager.getInstance().resume();
+                    }
+                });
 
         CommonUtils.getInstance().showMaterialAlertDialog(properties);
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        GameManager.getInstance().pause();
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        GameManager.getInstance().resume();
+    }
+
+
     private void resetGame(){
         GameManager.getInstance().reset(this);
         GameData.getInstance().reset();
+        if(GameManager.getInstance().ROBOT_PLAYER)
+            RobotPlayer.reset();
         resetDice();
     }
 

@@ -2,14 +2,12 @@ package com.idankorenisraeli.soccerbattle.game;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 
 import com.google.gson.reflect.TypeToken;
 import com.idankorenisraeli.soccerbattle.common.SharedPrefsManager;
 import com.idankorenisraeli.soccerbattle.player.PlayerSide;
 import com.idankorenisraeli.soccerbattle.player.SoccerPlayer;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -18,8 +16,9 @@ public class GameManager{
     private static GameManager single_instance = null;
     private int turnsPlayed;
     private PlayerSide currentTurn;
+    private boolean paused = false;
 
-    public final boolean ROBOT_PLAYER = false; // Will a robot play the game?
+    public final boolean ROBOT_PLAYER = true; // Will a robot play the game?
 
     private GameFinishedListener finishedListener;
 
@@ -106,4 +105,17 @@ public class GameManager{
         }
         return null;
     }
+
+    public void pause(){
+        paused = true;
+    }
+
+    public void resume(){
+        paused = false;
+    }
+
+    public boolean isPaused(){
+        return !paused;
+    }
+
 }

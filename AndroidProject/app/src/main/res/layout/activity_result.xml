@@ -37,8 +37,8 @@
             />
 
         <ImageView
-            android:layout_width="180dp"
-            android:layout_height="180dp"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:id="@+id/results_IMG_winner"
             android:background="@drawable/result_player_background"
             android:layout_gravity="center_horizontal"
@@ -69,7 +69,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="230dp"
         android:layout_alignParentBottom="true"
         android:layout_below="@id/results_LAY_info"
         android:gravity="center"
@@ -114,7 +114,7 @@
             android:layout_width="180dp"
             android:layout_height="70dp"
             android:layout_gravity="center_horizontal|top"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             style="@style/Widget.MaterialComponents.Button.GameButton"
             android:text="@string/back_to_home" />
 

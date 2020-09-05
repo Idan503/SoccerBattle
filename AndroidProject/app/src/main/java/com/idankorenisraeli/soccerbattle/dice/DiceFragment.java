@@ -90,7 +90,6 @@ public class DiceFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        System.out.println("Creating Dice");
         super.onCreateView(inflater,container,savedInstanceState);
         return inflater.inflate(R.layout.fragment_dice, container, false);
     }

@@ -47,8 +47,8 @@ public class AttackListener implements View.OnClickListener {
         }
     }
 
-    // Should be called every turn in case of points deduct
     private void updateBarProgress(Context context){
+        System.out.println("pttt" + "PRGS TO " + player.getCurrentPoints());
         bar.setProgress(player.getCurrentPoints()); // Setting the value of the progress bar
         if(player.getCurrentPoints() >= (int) (GameData.GREEN_BAR_THRESHOLD * SoccerPlayer.MAX_POINTS))
             setBarProgressColor(context, GameData.ProgressBarColor.GREEN);

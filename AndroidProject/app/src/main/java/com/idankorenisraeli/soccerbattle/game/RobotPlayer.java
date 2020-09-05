@@ -13,9 +13,21 @@ public class RobotPlayer {
 
     private static final int WAIT_TIME = 2000; // Waiting time between each turn
 
-    public RobotPlayer(FrameLayout[] left, FrameLayout[] right){
+    private static RobotPlayer single_instance = null;
+
+    private RobotPlayer(FrameLayout[] left, FrameLayout[] right){
         leftAttacks = left;
         rightAttacks = right;
+    }
+
+    public static RobotPlayer getInstance(){
+        return single_instance;
+    }
+
+    public static RobotPlayer initHelper(FrameLayout[] left, FrameLayout[] right){
+        if(single_instance==null)
+            single_instance = new RobotPlayer(left, right);
+        return single_instance;
     }
 
     // Performing one turn every WAIT_TIME ms
@@ -25,14 +37,13 @@ public class RobotPlayer {
             @Override
             public void run() {
                 GameManager manager = GameManager.getInstance();
-                performRandomAttack(manager.getCurrentTurn());
-                if(!manager.isGameOver())
+                if(manager.isPaused())
+                    performRandomAttack(manager.getCurrentTurn());
+                if(!manager.isGameOver() && manager.isPaused())
                     play();
             }
         }, WAIT_TIME);
     }
-
-
 
 
     private void performRandomAttack(PlayerSide currentTurn){
@@ -48,6 +59,10 @@ public class RobotPlayer {
                 rightAttacks[attackChosen].performClick();
                 break;
         }
+    }
+
+    public static void reset(){
+        single_instance = null;
     }
 
 }
