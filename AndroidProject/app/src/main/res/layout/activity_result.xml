@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:elevation="1dp"
         android:orientation="vertical"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="30dp"
         android:id="@+id/results_LAY_info"
         >
         <TextView
@@ -35,8 +35,8 @@
             />
 
         <ImageView
-            android:layout_width="140dp"
-            android:layout_height="140dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:id="@+id/results_IMG_winner"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
@@ -46,7 +46,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="10dp"
             android:id="@+id/results_LBL_message"
             android:text="@string/win_result_message"
             android:autoSizeTextType="uniform"
@@ -62,58 +62,53 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="110dp"
+        android:layout_below="@id/results_LAY_info"
+        android:gravity="center"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="70dp"
             android:orientation="horizontal"
             android:weightSum="1">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/top_ten_BTN_start"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal|top"
-                android:layout_marginStart="15dp"
-                android:layout_weight="0.45"
-                android:autoSizeTextType="uniform"
-                android:background="@drawable/menu_button_background"
-                android:padding="16dp"
+                android:layout_marginStart="30dp"
+                android:layout_weight="0.425"
+                style="@style/Widget.MaterialComponents.Button.GameButton"
                 android:text="@string/restart_game" />
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1" />
+                android:layout_weight="0.15" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/results_BTN_top_ten"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal|top"
-                android:layout_marginEnd="15dp"
-                android:layout_weight="0.45"
-                android:autoSizeTextType="uniform"
-                android:background="@drawable/menu_button_background"
-                android:padding="16dp"
+                android:layout_marginEnd="30dp"
+                android:layout_weight="0.425"
+                style="@style/Widget.MaterialComponents.Button.GameButton"
                 android:text="@string/top_ten_table" />
 
 
         </LinearLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/top_ten_BTN_home"
-            android:layout_width="220dp"
-            android:layout_height="60dp"
+            android:layout_width="170dp"
+            android:layout_height="70dp"
             android:layout_gravity="center_horizontal|top"
-            android:layout_marginTop="40dp"
-            android:autoSizeTextType="uniform"
-            android:background="@drawable/menu_button_background"
-            android:padding="16dp"
+            android:layout_marginTop="30dp"
+            style="@style/Widget.MaterialComponents.Button.GameButton"
             android:text="@string/back_to_home" />
 
 

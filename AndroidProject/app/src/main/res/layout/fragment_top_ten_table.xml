@@ -35,7 +35,7 @@
                 android:lines="1"
                 android:layout_weight="0.3"
                 android:padding="5dp"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 />
 
             <TextView
@@ -48,7 +48,7 @@
                 android:lines="1"
                 android:layout_weight="1"
                 android:padding="5dp"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 />
 
             <TextView
@@ -61,7 +61,7 @@
                 android:textColor="@android:color/black"
                 android:layout_weight="1"
                 android:padding="5dp"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 />
 
             <TextView
@@ -74,7 +74,7 @@
                 android:textColor="@android:color/black"
                 android:layout_weight="1"
                 android:padding="5dp"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 />
 
         </TableRow>

@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.idankorenisraeli.soccerbattle.common.CommonUtils;
+import com.idankorenisraeli.soccerbattle.common.SoundManager;
 import com.idankorenisraeli.soccerbattle.player.PlayerSide;
 import com.idankorenisraeli.soccerbattle.R;
 import com.idankorenisraeli.soccerbattle.game.GameData;
@@ -39,6 +40,8 @@ public class ResultActivity extends AppCompatActivity {
         }
 
         setBackgroundImage();
+
+        SoundManager.getInstance().play(GameData.SOUND_KEYS.CROWD_FINISH);
 
     }
 
@@ -102,8 +105,6 @@ public class ResultActivity extends AppCompatActivity {
         backHomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ResultActivity.this, HomeActivity.class);
-                startActivity(intent);
                 finish();
             }
         });
@@ -111,7 +112,7 @@ public class ResultActivity extends AppCompatActivity {
 
     private void setBackgroundImage(){
         // For background image
-        CommonUtils.getInstance().setImageResource(backgroundImage,GameData.getInstance().getBackgroundId());
+        CommonUtils.getInstance().setImageResource(backgroundImage,GameData.DRAWABLE_KEYS.BACKGROUND_FIELD_DRAWABLE_ID);
     }
 
     @Override

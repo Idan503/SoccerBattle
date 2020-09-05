@@ -37,26 +37,26 @@
             android:layout_weight="0.5"
             android:id="@+id/top_ten_FRAG_table"
             android:name="com.idankorenisraeli.soccerbattle.top_ten.TopTenTable"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="25dp"
             />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:gravity="center_horizontal"
-            android:layout_weight="0.1"
+            android:layout_weight="0.125"
             android:orientation="horizontal"
             android:layout_gravity="bottom"
             >
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/top_ten_BTN_home"
                 android:layout_height="match_parent"
                 android:layout_width="160dp"
                 android:layout_marginStart="15dp"
-                android:autoSizeTextType="uniform"
-                android:background="@drawable/menu_button_background"
-                android:padding="16dp"
+                android:lines="1"
+                style="@style/Widget.MaterialComponents.Button.GameButton"
                 android:text="@string/back_to_home" />
 
             <View
@@ -64,14 +64,13 @@
                 android:layout_height="match_parent"
                 />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/top_ten_BTN_start"
                 android:layout_width="160dp"
                 android:layout_height="match_parent"
+                android:lines="1"
                 android:layout_marginEnd="15dp"
-                android:autoSizeTextType="uniform"
-                android:background="@drawable/menu_button_background"
-                android:padding="16dp"
+                style="@style/Widget.MaterialComponents.Button.GameButton"
                 android:text="@string/start_game" />
 
         </LinearLayout>
@@ -80,7 +79,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.05"
+            android:layout_weight="0.025"
             />
 
     </LinearLayout>

@@ -4,10 +4,12 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -16,6 +18,8 @@ import androidx.core.app.ActivityCompat;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.idankorenisraeli.soccerbattle.R;
 
 import java.util.Objects;
 
@@ -53,6 +57,18 @@ public class CommonUtils {
 
     public void showToast(String message){
         Toast.makeText(context,message, Toast.LENGTH_SHORT).show();
+    }
+
+    // Need to send Activity in order to have the style
+    public void showMaterialAlertDialog(Activity activity, String title, String message,
+                                        String yesLabel, DialogInterface.OnClickListener positive,
+                                        String noLabel, DialogInterface.OnClickListener negative){
+        new MaterialAlertDialogBuilder(activity)
+                .setTitle(title)
+                .setMessage(message)
+                .setNegativeButton(noLabel,negative)
+                .setPositiveButton(yesLabel,positive)
+                .show();
     }
 
     //Getting last known location with GPS permission, we need activity here and not only context

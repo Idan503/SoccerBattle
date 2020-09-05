@@ -3,8 +3,12 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="attackButton">#E6E6E6</color>
-    <color name="attackButtonOutline">#707070</color>
+
+    <color name="buttonPrimary">#30AE19</color>
+    <color name="buttonAccent">#59090909</color>
+    <color name="buttonAccentLight">#E6FBFBFB</color>
+    <color name="buttonRipple">#19FFFFFF</color>
+    <color name="buttonRippleDark">#4D070707</color>
 
 
     <!--Table-->

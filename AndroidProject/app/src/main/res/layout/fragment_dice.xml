@@ -1,40 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".dice.DiceFragment">
 
-    <FrameLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="w,1:1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        >
     
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:layout_constraintDimensionRatio="w,1:1"
             android:id="@+id/dice_IMG_source"
             android:background="@drawable/ic_dice_1"
             android:contentDescription="@string/dice"
             />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:layout_constraintDimensionRatio="w,1:1"
             android:text="@string/roll_dice"
             android:elevation="1dp"
-            android:padding="15dp"
-            android:autoSizeTextType="uniform"
             android:id="@+id/dice_BTN_roll"
-            android:background="@android:color/white"
-            android:alpha="1"
+            android:autoSizeTextType="uniform"
+            android:padding="10dp"
+            app:cornerRadius="10dp"
+            app:rippleColor="@android:color/transparent"
+            app:backgroundTint="@android:color/white"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="-5dp"
+            android:layout_marginBottom="-5dp"
             />
 
-    </FrameLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

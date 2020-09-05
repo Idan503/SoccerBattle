@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -172,7 +173,7 @@ public class GameActivity extends AppCompatActivity implements DiceRolledListene
         playerRightBar.setEnabled(false); // Prevent user change
 
         // For background image
-        utils.setImageResource(backgroundImage, GameData.getInstance().getBackgroundId());
+        utils.setImageResource(backgroundImage, GameData.DRAWABLE_KEYS.BACKGROUND_FIELD_DRAWABLE_ID);
     }
 
     private void generatePlayers(){
@@ -304,7 +305,16 @@ public class GameActivity extends AppCompatActivity implements DiceRolledListene
 
     @Override
     public void onBackPressed(){
-        finish();
+        // Asking user before exit game
+        CommonUtils.getInstance().showMaterialAlertDialog(this,"Exit game?",
+                "Are you sure you would like to exit the game?\n" +
+                        "Current game progress will be lost.",
+                "Exit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                },"Cancel", null);
     }
 
     private void resetGame(){

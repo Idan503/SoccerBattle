@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -8,10 +8,42 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <style name="StyledDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="GameButtonTheme" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@color/buttonPrimary</item>
+        <item name="android:textAllCaps">true</item>
+
+    </style>
+
+    <style name="Widget.MaterialComponents.Button.GameButton" parent="Widget.MaterialComponents.Button">
+
+        <item name="materialButtonStyle">@style/GameButtonTheme</item>
+        <item name="backgroundColor">@color/buttonAccent</item>
+        <item name="backgroundTint">@color/buttonAccent</item>
+        <item name="iconPadding">3dp</item>
+        <item name="strokeWidth">4dp</item>
+        <item name="strokeColor">@color/buttonPrimary</item>
+        <item name="cornerRadius">25dp</item>
+
+        <item name="autoSizeTextType">uniform</item>
+        <item name="android:textSize">20sp</item>
+
+
+        <item name="android:textColor">@color/buttonPrimary</item>
+        <item name="android:padding">17dp</item>
+        <item name="rippleColor">@color/buttonRipple</item>
+
     </style>
 </resources>

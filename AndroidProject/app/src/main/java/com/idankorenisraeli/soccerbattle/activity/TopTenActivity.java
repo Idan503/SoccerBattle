@@ -59,8 +59,6 @@ public class TopTenActivity extends FragmentActivity {
         backHomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TopTenActivity.this, HomeActivity.class);
-                startActivity(intent);
                 finish();
             }
         });
@@ -82,7 +80,7 @@ public class TopTenActivity extends FragmentActivity {
 
     private void setBackgroundImage(){
         // For background image
-        CommonUtils.getInstance().setImageResource(backgroundImage, GameData.getInstance().getBackgroundId());
+        CommonUtils.getInstance().setImageResource(backgroundImage, GameData.DRAWABLE_KEYS.BACKGROUND_FIELD_DRAWABLE_ID);
     }
 
 
