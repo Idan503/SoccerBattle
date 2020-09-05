@@ -10,8 +10,4 @@
     <color name="buttonRipple">#19FFFFFF</color>
     <color name="buttonRippleDark">#4D070707</color>
 
-
-    <!--Table-->
-    <color name="background_first_row">#B2ACACAC</color>
-    <color name="background_row">#79CDCDCD</color>
 </resources>

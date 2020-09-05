@@ -19,7 +19,9 @@ import com.idankorenisraeli.soccerbattle.game.GameData;
 public class HomeActivity extends AppCompatActivity {
 
     ImageView backgroundImage;
+    ImageView leftPlayer, rightPlayer;
     Button startButton, tableButton;
+
 
     Context context;
 
@@ -30,8 +32,6 @@ public class HomeActivity extends AppCompatActivity {
         findViews();
         setBackgroundImage();
         context = this;
-
-        Log.d("Created","HOME");
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +49,20 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        setPlayersImages();
+        startPlayingAmbientSound();
+    }
+
+
+    private void findViews(){
+        backgroundImage = findViewById(R.id.common_IMG_background);
+        startButton = findViewById(R.id.home_BTN_start);
+        tableButton = findViewById(R.id.home_BTN_top_ten);
+        leftPlayer = findViewById(R.id.home_IMG_player_left);
+        rightPlayer = findViewById(R.id.home_IMG_player_right);
+    }
+
+    private void startPlayingAmbientSound(){
         SoundPool pool = SoundManager.getInstance().getSoundPool();
         pool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
             @Override
@@ -58,11 +72,9 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-
-    private void findViews(){
-        backgroundImage = findViewById(R.id.common_IMG_background);
-        startButton = findViewById(R.id.home_BTN_start);
-        tableButton = findViewById(R.id.home_BTN_top_ten);
+    private void setPlayersImages(){
+        CommonUtils.getInstance().setImageResource(leftPlayer, GameData.DRAWABLE_KEYS.PLAYER_LEFT_DRAWABLE_ID);
+        CommonUtils.getInstance().setImageResource(rightPlayer, GameData.DRAWABLE_KEYS.PLAYER_RIGHT_DRAWABLE_ID);
     }
 
     private void setBackgroundImage(){

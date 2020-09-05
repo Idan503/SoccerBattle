@@ -27,7 +27,6 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        Log.d("Created","RESULTS");
 
         PlayerSide winner = (PlayerSide) getIntent().getSerializableExtra("WinnerPlayer");
         int numOfTurns = getIntent().getIntExtra("TurnsPlayed", 0);

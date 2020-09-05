@@ -61,7 +61,7 @@ public class GameResult {
     @NonNull
     @Override
     public String toString(){
-        return this.name + " won in " + this.turns;
+        return this.name + " win in " + this.turns + " turns";
     }
 
 }

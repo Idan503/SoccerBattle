@@ -25,6 +25,7 @@
             android:id="@+id/dice_BTN_roll"
             android:autoSizeTextType="uniform"
             android:padding="10dp"
+            android:lineSpacingMultiplier="0.8"
             app:cornerRadius="10dp"
             app:rippleColor="@android:color/transparent"
             app:backgroundTint="@android:color/white"

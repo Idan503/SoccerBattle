@@ -60,14 +60,12 @@ public class CommonUtils {
     }
 
     // Need to send Activity in order to have the style
-    public void showMaterialAlertDialog(Activity activity, String title, String message,
-                                        String yesLabel, DialogInterface.OnClickListener positive,
-                                        String noLabel, DialogInterface.OnClickListener negative){
-        new MaterialAlertDialogBuilder(activity)
-                .setTitle(title)
-                .setMessage(message)
-                .setNegativeButton(noLabel,negative)
-                .setPositiveButton(yesLabel,positive)
+    public void showMaterialAlertDialog(MaterialDialogProperties properties){
+        new MaterialAlertDialogBuilder(properties.getActivity())
+                .setTitle(properties.getTitleLabel())
+                .setMessage(properties.getMessage())
+                .setNegativeButton(properties.getNoLabel(),properties.getOnNegative())
+                .setPositiveButton(properties.getYesLabel(),properties.getOnPositive())
                 .show();
     }
 

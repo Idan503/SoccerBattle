@@ -11,4 +11,7 @@ Effect kick: https://freesound.org/people/volivieri/sounds/37156/<br/>
 Effect kick-goal: https://freesound.org/people/volivieri/sounds/37157/<br/>
 Crowd ambient: https://www.youtube.com/watch?v=eLKOtVmopo0<br/>
 Crowd finish: https://www.youtube.com/watch?v=barWV7RWkq0<br/>
-Crowd goal: https://www.youtube.com/watch?v=Xm_TXfiCGqo
+Crowd goal: https://www.youtube.com/watch?v=Xm_TXfiCGqo<br/>
+
+# In-Game Font Attributes
+Champions League font: https://befonts.com/champions-bold.html<br/>

@@ -20,6 +20,7 @@ import com.google.android.gms.common.internal.ServiceSpecificExtraArgs;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.reflect.TypeToken;
 import com.idankorenisraeli.soccerbattle.R;
+import com.idankorenisraeli.soccerbattle.common.CommonUtils;
 import com.idankorenisraeli.soccerbattle.common.SharedPrefsManager;
 import com.idankorenisraeli.soccerbattle.game.GameResult;
 
@@ -111,9 +112,10 @@ public class TopTenTable extends Fragment {
         if(allResults!=null) {
             allResults.sort(new SortByTurns());
 
+            // tableResult.length size is set to 10
             for (int i = 0; i < tableResults.length; i++) {
                 if (i > allResults.size() - 1)
-                    break;
+                    break; // All saved results are initiated
                 tableResults[i] = allResults.get(i); // Copying part of all the results
             }
         }
@@ -142,6 +144,11 @@ public class TopTenTable extends Fragment {
         table.addView(tableRow);
     }
 
+
+    public void deleteResult(GameResult result){
+        allResults.remove(result);
+        SharedPrefsManager.getInstance().putArray(SharedPrefsManager.KEYS.SP_ALL_RESULTS, allResults);
+    }
 
     // Converting the location (lat,lang) to a real address string
     private String getAddressFromLocation(LatLng location) {

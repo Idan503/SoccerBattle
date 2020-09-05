@@ -17,6 +17,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.idankorenisraeli.soccerbattle.common.CommonUtils;
+import com.idankorenisraeli.soccerbattle.common.MaterialDialogProperties;
 import com.idankorenisraeli.soccerbattle.game.RobotPlayer;
 import com.idankorenisraeli.soccerbattle.player.PlayerSide;
 import com.idankorenisraeli.soccerbattle.R;
@@ -71,7 +72,6 @@ public class GameActivity extends AppCompatActivity implements DiceRolledListene
         super.onCreate(savedInstanceState);
         GameManager.initHelper(this);
 
-        Log.d("Created","GAME");
         if(savedInstanceState==null)
             resetGame();
         initUI();
@@ -306,15 +306,18 @@ public class GameActivity extends AppCompatActivity implements DiceRolledListene
     @Override
     public void onBackPressed(){
         // Asking user before exit game
-        CommonUtils.getInstance().showMaterialAlertDialog(this,"Exit game?",
-                "Are you sure you would like to exit the game?\n" +
-                        "Current game progress will be lost.",
-                "Exit", new DialogInterface.OnClickListener() {
+        MaterialDialogProperties properties = new MaterialDialogProperties(this,
+                "Exit Game", "Exit", "Cancel",
+                "Are you sure?\n" +
+                        "Any current game progress will be lost.",
+                new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         finish();
                     }
-                },"Cancel", null);
+                },null);
+
+        CommonUtils.getInstance().showMaterialAlertDialog(properties);
     }
 
     private void resetGame(){

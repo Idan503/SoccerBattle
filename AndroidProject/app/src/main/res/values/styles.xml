@@ -19,11 +19,13 @@
         <item name="android:windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
+        <item name="fontFamily">@font/champions</item>
     </style>
 
     <style name="GameButtonTheme" parent="Widget.AppCompat.Button">
         <item name="android:textColor">@color/buttonPrimary</item>
         <item name="android:textAllCaps">true</item>
+        <item name="fontFamily">@font/champions</item>
 
     </style>
 
@@ -35,15 +37,34 @@
         <item name="iconPadding">3dp</item>
         <item name="strokeWidth">4dp</item>
         <item name="strokeColor">@color/buttonPrimary</item>
-        <item name="cornerRadius">25dp</item>
+        <item name="cornerRadius">50dp</item>
 
         <item name="autoSizeTextType">uniform</item>
         <item name="android:textSize">20sp</item>
+        <item name="android:autoSizeMinTextSize">8sp</item>
+        <item name="android:autoSizeMaxTextSize">20sp</item>
 
+        <item name="android:letterSpacing">-0.03</item>
 
         <item name="android:textColor">@color/buttonPrimary</item>
-        <item name="android:padding">17dp</item>
+        <item name="android:padding">14dp</item>
         <item name="rippleColor">@color/buttonRipple</item>
+        <item name="fontFamily">@font/champions</item>
+
+    </style>
+
+    <style name="Base.Widget.AppCompat.TextView.TableRowText" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="android:autoSizeMaxTextSize">18sp</item>
+        <item name="android:autoSizeMinTextSize">6sp</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:lines">1</item>
+        <item name="android:gravity">center</item>
+
 
     </style>
 </resources>
