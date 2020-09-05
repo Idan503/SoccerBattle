@@ -36,6 +36,7 @@ public class HomeActivity extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.setEnabled(false);
                 Intent intent = new Intent(HomeActivity.this, GameActivity.class);
                 startActivity(intent);
             }
@@ -44,6 +45,7 @@ public class HomeActivity extends AppCompatActivity {
         tableButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.setEnabled(false);
                 Intent intent = new Intent(HomeActivity.this, TopTenActivity.class);
                 startActivity(intent);
             }
@@ -83,6 +85,12 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        startButton.setEnabled(true);
+        tableButton.setEnabled(true);
+    }
 
 
     @Override

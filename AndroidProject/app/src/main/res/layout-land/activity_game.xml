@@ -127,6 +127,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="50dp"
         android:lines="1"
+        android:autoSizeMaxTextSize="25sp"
+        android:autoSizeMinTextSize="10sp"
         android:gravity="center_horizontal"
         android:textAllCaps="true"
         android:autoSizeTextType="uniform"

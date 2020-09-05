@@ -88,6 +88,7 @@ public class ResultActivity extends AppCompatActivity {
         restartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.setEnabled(false);
                 Intent intent = new Intent(ResultActivity.this, GameActivity.class);
                 startActivity(intent);
                 finish();
@@ -96,6 +97,7 @@ public class ResultActivity extends AppCompatActivity {
         topTenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.setEnabled(false);
                 Intent intent = new Intent(ResultActivity.this, TopTenActivity.class);
                 startActivity(intent);
                 finish();
@@ -112,6 +114,15 @@ public class ResultActivity extends AppCompatActivity {
     private void setBackgroundImage(){
         // For background image
         CommonUtils.getInstance().setImageResource(backgroundImage,GameData.DRAWABLE_KEYS.BACKGROUND_FIELD_DRAWABLE_ID);
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        backHomeButton.setEnabled(true);
+        restartButton.setEnabled(true);
+        topTenButton.setEnabled(true);
     }
 
     @Override

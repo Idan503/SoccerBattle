@@ -78,6 +78,8 @@
         android:gravity="center"
         android:lines="1"
         android:textAllCaps="true"
+        android:autoSizeMaxTextSize="25sp"
+        android:autoSizeMinTextSize="10sp"
         android:textColor="@android:color/white"
         />
 
