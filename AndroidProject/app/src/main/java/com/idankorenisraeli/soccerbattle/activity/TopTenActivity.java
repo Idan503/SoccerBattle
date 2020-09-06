@@ -24,7 +24,7 @@ import com.idankorenisraeli.soccerbattle.game.GameResult;
 import com.idankorenisraeli.soccerbattle.top_ten.TopTenMap;
 import com.idankorenisraeli.soccerbattle.top_ten.TopTenTable;
 
-public class TopTenActivity extends FragmentActivity {
+public class TopTenActivity extends BaseActivity {
 
     TopTenMap map;
     TopTenTable table;

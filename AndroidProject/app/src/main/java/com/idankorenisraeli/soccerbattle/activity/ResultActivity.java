@@ -16,7 +16,7 @@ import com.idankorenisraeli.soccerbattle.player.PlayerSide;
 import com.idankorenisraeli.soccerbattle.R;
 import com.idankorenisraeli.soccerbattle.game.GameData;
 
-public class ResultActivity extends AppCompatActivity {
+public class ResultActivity extends BaseActivity {
 
     TextView winnerTitle, resultMessage;
     ImageView backgroundImage, winnerImage;

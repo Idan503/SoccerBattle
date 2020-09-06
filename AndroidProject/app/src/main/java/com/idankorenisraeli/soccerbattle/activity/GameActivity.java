@@ -32,7 +32,7 @@ import com.idankorenisraeli.soccerbattle.game.GameData;
 import com.idankorenisraeli.soccerbattle.game.GameFinishedListener;
 import com.idankorenisraeli.soccerbattle.game.GameManager;
 
-public class GameActivity extends AppCompatActivity implements DiceRolledListener, GameFinishedListener {
+public class GameActivity extends BaseActivity implements DiceRolledListener, GameFinishedListener {
 
     // region Players Declarations
 
@@ -79,6 +79,9 @@ public class GameActivity extends AppCompatActivity implements DiceRolledListene
         initUI();
         initDice();
         initGame();
+
+        if(!CommonUtils.getInstance().isLocationGranted(this))
+            CommonUtils.getInstance().requestLocation(this);
     }
 
     // region Runtime Interface Initialisation
@@ -209,10 +212,6 @@ public class GameActivity extends AppCompatActivity implements DiceRolledListene
 
         attackManager.updateAttackButtons();
 
-        if(bothDiceRolled() && GameManager.getInstance().ROBOT_PLAYER){
-            initRobot();
-        }
-
     }
 
     private void initRobot(){
@@ -273,6 +272,10 @@ public class GameActivity extends AppCompatActivity implements DiceRolledListene
 
                 // Game can be started
                 initGame();
+                if(GameManager.getInstance().ROBOT_PLAYER){
+                    initRobot();
+                }
+
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -339,12 +342,18 @@ public class GameActivity extends AppCompatActivity implements DiceRolledListene
     public void onPause() {
         super.onPause();
         GameManager.getInstance().pause();
+        if(bothDiceRolled() && GameManager.getInstance().ROBOT_PLAYER){
+            RobotPlayer.reset();
+        }
     }
 
     @Override
     public void onResume(){
         super.onResume();
         GameManager.getInstance().resume();
+        if(bothDiceRolled() && GameManager.getInstance().ROBOT_PLAYER){
+            initRobot();
+        }
     }
 
 

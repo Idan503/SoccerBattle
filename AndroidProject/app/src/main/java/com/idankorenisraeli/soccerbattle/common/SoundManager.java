@@ -4,7 +4,9 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.media.AudioAttributes;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
+import android.provider.MediaStore;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -22,6 +24,7 @@ public class SoundManager {
 
     // Soundpool is for short sounds (SFX), while MediaPlayer is for longer sounds
     private SoundPool soundPool;
+    private MediaPlayer player;
     private HashMap<Integer,Integer> keyToSound = new HashMap<>();
 
     private final static int DEFAULT_PRIORITY = 1;
@@ -66,12 +69,23 @@ public class SoundManager {
     }
 
     // Playing the same sound over and over
-    public void playLoop(int soundKey){
-        if(keyToSound.containsKey(soundKey)) {
-            soundPool.play(Objects.requireNonNull(keyToSound.get(soundKey)), 1, 1, 1, -1, 1);
-        }
-        else
-            throw new Resources.NotFoundException("Could not find requested sound");
+    public void playAmbient(int soundId){
+        player = MediaPlayer.create(context,soundId);
+        player.setLooping(true);
+        player.start();
+
+    }
+
+    public void resetAmbient(){
+        if(player!=null)
+            player.reset();
+    }
+
+
+    public boolean isPlayingAmbient(){
+        if(player==null)
+            return false;
+        return player.isPlaying();
     }
 
     public SoundPool getSoundPool(){
@@ -81,6 +95,7 @@ public class SoundManager {
 
     public void release(){
         soundPool.release();
+        player.release();
         soundPool = null;
     }
 

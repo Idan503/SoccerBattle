@@ -2,6 +2,7 @@ package com.idankorenisraeli.soccerbattle.game;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.reflect.TypeToken;
 import com.idankorenisraeli.soccerbattle.common.SharedPrefsManager;
@@ -34,7 +35,7 @@ public class GameManager{
 
     public static GameManager getInstance() {
         if (single_instance == null)
-            System.out.println("initHelper should be called first");
+            Log.w(GameManager.class.getSimpleName(),"instance is null, initHelper should be called first.");
         return single_instance;
     }
 

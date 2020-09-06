@@ -69,12 +69,21 @@ public class CommonUtils {
                 .show();
     }
 
+    public void requestLocation(Activity activity){
+        ActivityCompat.requestPermissions(Objects.requireNonNull(activity),new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_LOCATION);
+    }
+
+    public boolean isLocationGranted(Activity activity){
+        return (ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) ||
+                (ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED);
+    }
+
     //Getting last known location with GPS permission, we need activity here and not only context
+    @SuppressLint("MissingPermission")
     public LatLng getCurrentLocation(Activity activity){
         LocationManager locationManager = (LocationManager) activity.getSystemService(Context.LOCATION_SERVICE);
-        if(ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(Objects.requireNonNull(activity),new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_LOCATION);
+        if(!isLocationGranted(activity)){
+            requestLocation(activity); // permission is checked here
         } else{
             Location currentLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
             if(currentLocation!=null){

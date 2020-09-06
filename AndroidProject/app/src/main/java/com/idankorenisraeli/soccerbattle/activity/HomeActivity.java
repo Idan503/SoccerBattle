@@ -16,7 +16,7 @@ import com.idankorenisraeli.soccerbattle.R;
 import com.idankorenisraeli.soccerbattle.common.SoundManager;
 import com.idankorenisraeli.soccerbattle.game.GameData;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends BaseActivity {
 
     ImageView backgroundImage;
     ImageView leftPlayer, rightPlayer;
@@ -52,7 +52,6 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         setPlayersImages();
-        startPlayingAmbientSound();
     }
 
 
@@ -62,16 +61,6 @@ public class HomeActivity extends AppCompatActivity {
         tableButton = findViewById(R.id.home_BTN_top_ten);
         leftPlayer = findViewById(R.id.home_IMG_player_left);
         rightPlayer = findViewById(R.id.home_IMG_player_right);
-    }
-
-    private void startPlayingAmbientSound(){
-        SoundPool pool = SoundManager.getInstance().getSoundPool();
-        pool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
-            @Override
-            public void onLoadComplete(SoundPool soundPool, int i, int i1) {
-                SoundManager.getInstance().playLoop(GameData.SOUND_KEYS.CROWD_AMBIENT);
-            }
-        });
     }
 
     private void setPlayersImages(){
@@ -100,10 +89,12 @@ public class HomeActivity extends AppCompatActivity {
         // Guarantee application killed completely when user presses back button on this screen
     }
 
+
     @Override
     public void onDestroy(){
         super.onDestroy();
         if(isFinishing()){
+            // app is finishing, releasing sound objects
             SoundManager.getInstance().release();
         }
     }

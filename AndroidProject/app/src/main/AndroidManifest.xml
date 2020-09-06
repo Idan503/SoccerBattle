@@ -34,12 +34,18 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".activity.ResultActivity" />
-        <activity android:name=".activity.TopTenActivity" />
-        <activity android:name=".activity.HomeActivity" >
+        <activity
+            android:name=".activity.ResultActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activity.TopTenActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.HomeActivity"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
