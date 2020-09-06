@@ -66,6 +66,7 @@ public class GameActivity extends BaseActivity implements DiceRolledListener, Ga
     // region Other Declarations
 
     ImageView backgroundImage;
+    boolean showingExitDialog = false;
     // endregion
 
 
@@ -79,6 +80,10 @@ public class GameActivity extends BaseActivity implements DiceRolledListener, Ga
         initUI();
         initDice();
         initGame();
+
+        if(GameManager.getInstance().ROBOT_PLAYER){
+            lockOrientation(); // Robot can't recognize orientation change on runtime
+        }
 
         if(!CommonUtils.getInstance().isLocationGranted(this))
             CommonUtils.getInstance().requestLocation(this);
@@ -217,7 +222,6 @@ public class GameActivity extends BaseActivity implements DiceRolledListener, Ga
     private void initRobot(){
         FrameLayout[] leftAttacks = {attackLeftLayout1, attackLeftLayout2, attackLeftLayout3};
         FrameLayout[] rightAttacks = {attackRightLayout1, attackRightLayout2, attackRightLayout3};
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // Robot can't recognize orientation change on runtime
         RobotPlayer robot = RobotPlayer.initHelper(leftAttacks, rightAttacks);
         robot.play();
     }
@@ -331,9 +335,12 @@ public class GameActivity extends BaseActivity implements DiceRolledListener, Ga
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         GameManager.getInstance().resume();
-                        RobotPlayer.getInstance().play();
+                        if(bothDiceRolled() && GameManager.getInstance().ROBOT_PLAYER)
+                            RobotPlayer.getInstance().play();
+                        showingExitDialog = false;
                     }
                 });
+        showingExitDialog = true;
 
         CommonUtils.getInstance().showMaterialAlertDialog(properties);
     }
@@ -342,7 +349,7 @@ public class GameActivity extends BaseActivity implements DiceRolledListener, Ga
     public void onPause() {
         super.onPause();
         GameManager.getInstance().pause();
-        if(bothDiceRolled() && GameManager.getInstance().ROBOT_PLAYER){
+        if(bothDiceRolled() && GameManager.getInstance().ROBOT_PLAYER && !showingExitDialog){
             RobotPlayer.reset();
         }
     }
@@ -351,7 +358,7 @@ public class GameActivity extends BaseActivity implements DiceRolledListener, Ga
     public void onResume(){
         super.onResume();
         GameManager.getInstance().resume();
-        if(bothDiceRolled() && GameManager.getInstance().ROBOT_PLAYER){
+        if(bothDiceRolled() && GameManager.getInstance().ROBOT_PLAYER && !showingExitDialog){
             initRobot();
         }
     }
